@@ -141,9 +141,22 @@ section,header,footer{position:relative;z-index:2}
 /* genres + player side by side */
 .play-wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:start;margin-top:30px}
 .genres{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin:0}
-.genre{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;
-  font-weight:600;font-size:.98rem;text-align:center;transition:.2s var(--ease);cursor:default}
-.genre:hover{transform:translateY(-3px) rotate(-1deg);border-color:var(--amber);color:var(--amber-2);box-shadow:var(--shadow)}
+.genre{position:relative;z-index:0;overflow:hidden;border-radius:14px;min-height:86px;
+  display:flex;align-items:flex-end;padding:14px;cursor:default;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  color:#fff;font-family:"Fraunces",serif;font-weight:600;font-size:1rem;line-height:1.12;
+  text-shadow:0 1px 8px rgba(0,0,0,.45);transition:transform .22s var(--ease),box-shadow .22s}
+/* corner vinyl record */
+.genre::before{content:"";position:absolute;z-index:-1;right:-22px;bottom:-22px;width:82px;height:82px;border-radius:50%;
+  background:
+    radial-gradient(circle,#ecdfca 0 6px,#1c140c 7px 8px,transparent 9px),
+    repeating-radial-gradient(circle,#1c140c 0 2.5px,#3a2c1e 2.5px 5px);
+  opacity:.55;transition:transform .8s var(--ease)}
+/* legibility scrim for the label */
+.genre::after{content:"";position:absolute;z-index:-1;inset:0;
+  background:linear-gradient(to top,rgba(20,14,8,.5),transparent 58%)}
+.genre:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.genre:hover::before{transform:rotate(170deg)}
 
 /* deck / player */
 .deck{margin-top:0;background:var(--ink);color:var(--paper);border-radius:20px;padding:26px;max-width:none;box-shadow:var(--shadow)}
@@ -233,12 +246,19 @@ section,header,footer{position:relative;z-index:2}
 .reveal.d3{transition-delay:.27s}
 .reveal.d4{transition-delay:.36s}
 
-/* ---------- industries (compact chips) ---------- */
-.industries{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.ind{background:var(--card);border:1px solid var(--line);border-radius:100px;padding:11px 18px;
-  display:flex;align-items:center;gap:10px;font-weight:600;font-size:.96rem;transition:.18s var(--ease)}
-.ind:hover{transform:translateY(-3px);border-color:var(--amber);box-shadow:var(--shadow)}
-.ind-ic{font-size:1.2rem;line-height:1}
+/* ---------- industries (photo cards) ---------- */
+.industries{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.ind{position:relative;aspect-ratio:4/3.1;border-radius:16px;overflow:hidden;
+  display:flex;align-items:flex-end;box-shadow:var(--shadow);isolation:isolate;background:var(--ink)}
+.ind img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
+  transition:transform .55s var(--ease);filter:saturate(.92)}
+.ind::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgba(28,20,12,.9) 4%,rgba(28,20,12,.35) 48%,rgba(28,20,12,.05) 100%);
+  transition:opacity .3s}
+.ind:hover img{transform:scale(1.07)}
+.ind:hover::after{background:linear-gradient(to top,rgba(176,58,18,.92) 4%,rgba(28,20,12,.35) 52%,transparent 100%)}
+.ind-label{position:relative;padding:18px 18px 16px;color:#fff;font-family:"Fraunces",serif;
+  font-weight:600;font-size:1.14rem;line-height:1.12;text-shadow:0 1px 10px rgba(0,0,0,.45)}
 
 /* ---------- compatibility ---------- */
 .compat-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center}
