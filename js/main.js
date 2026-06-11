@@ -26,13 +26,46 @@
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
+  // ---- pricing toggle ----
+  var prices = document.querySelector('.prices');
+  var billBtns = document.querySelectorAll('.bill-toggle button');
+  billBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      billBtns.forEach(function (o) {
+        o.setAttribute('aria-pressed', o === b ? 'true' : 'false');
+      });
+      prices.classList.toggle('yearly', b.getAttribute('data-bill') === 'yr');
+    });
+  });
+
+  // ---- sticky mobile CTA (after hero, hidden near the form) ----
+  var mcta = document.querySelector('.mobile-cta');
+  var hero = document.querySelector('.hero');
+  var trial = document.getElementById('trial');
+  if (mcta && hero && trial && 'IntersectionObserver' in window) {
+    var heroGone = false, trialSeen = false;
+    var updateCta = function () {
+      mcta.classList.toggle('show', heroGone && !trialSeen);
+    };
+    new IntersectionObserver(function (es) {
+      heroGone = !es[0].isIntersecting; updateCta();
+    }).observe(hero);
+    new IntersectionObserver(function (es) {
+      trialSeen = es[0].isIntersecting; updateCta();
+    }).observe(trial);
+  }
+
   // ---- sample player (one track at a time) ----
   var audio = new Audio();
   var current = null;
+  var deck = document.querySelector('.deck');
 
   function reset(btn) {
     btn.classList.remove('playing');
     btn.querySelector('.track-play').textContent = '▶'; // ▶
+    var bar = btn.querySelector('.track-progress');
+    if (bar) bar.style.width = '0';
+    if (deck) deck.classList.remove('live');
   }
 
   document.querySelectorAll('.track').forEach(function (btn) {
@@ -49,11 +82,18 @@
       audio.play().then(function () {
         btn.classList.add('playing');
         icon.textContent = '❚❚';        // ❚❚
+        if (deck) deck.classList.add('live');
       }).catch(function () {
         icon.textContent = '—';              // — sample missing in MVP
       });
       current = btn;
     });
+  });
+
+  audio.addEventListener('timeupdate', function () {
+    if (!current || !audio.duration) return;
+    var bar = current.querySelector('.track-progress');
+    if (bar) bar.style.width = (audio.currentTime / audio.duration * 100) + '%';
   });
 
   audio.addEventListener('ended', function () {

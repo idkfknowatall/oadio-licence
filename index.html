@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oadio — Licence-Free Music for UK Venues | From £15/month</title>
 <meta name="description" content="Play great music in your café, salon, gym or shop without a PRS/PPL licence. Curated licence-free playlists from £15 + VAT a month. Free 14-day trial, no card.">
+<meta name="theme-color" content="#f3e9d8">
+<link rel="canonical" href="https://oadio.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='5' y='5' width='22' height='22' rx='7' fill='%23d9531c' transform='rotate(8 16 16)'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Oadio">
+<meta property="og:title" content="Oadio — Licence-Free Music for UK Venues">
+<meta property="og:description" content="Curated licence-free playlists from £15 + VAT a month. No PRS/PPL licence needed. Free 14-day trial, no card.">
+<meta property="og:url" content="https://oadio.com/">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +30,7 @@
 </script>
 </head>
 <body>
+<a class="skip-link" href="#top">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
 
 <header class="site-header">
@@ -118,35 +129,35 @@
   <h2 class="reveal d1">If it has a door and a speaker,<br>it sounds better with Oadio.</h2>
   <div class="industries">
     <article class="ind reveal">
-      <img src="https://loremflickr.com/600/450/cafe,coffee?lock=11" alt="" loading="lazy">
+      <img src="https://loremflickr.com/600/450/cafe,coffee?lock=11" alt="" loading="lazy" decoding="async">
       <span class="ind-label">Cafés &amp; coffee shops</span>
     </article>
     <article class="ind reveal d1">
-      <img src="https://loremflickr.com/600/450/hair,salon?lock=22" alt="" loading="lazy">
+      <img src="https://loremflickr.com/600/450/hair,salon?lock=22" alt="" loading="lazy" decoding="async">
       <span class="ind-label">Hair &amp; beauty salons</span>
     </article>
     <article class="ind reveal d2">
-      <img src="https://loremflickr.com/600/450/gym,fitness?lock=33" alt="" loading="lazy">
+      <img src="https://loremflickr.com/600/450/gym,fitness?lock=33" alt="" loading="lazy" decoding="async">
       <span class="ind-label">Gyms &amp; studios</span>
     </article>
     <article class="ind reveal d3">
-      <img src="https://loremflickr.com/600/450/boutique,shop?lock=44" alt="" loading="lazy">
+      <img src="https://loremflickr.com/600/450/boutique,shop?lock=44" alt="" loading="lazy" decoding="async">
       <span class="ind-label">Shops &amp; retail</span>
     </article>
     <article class="ind reveal">
-      <img src="https://loremflickr.com/600/450/restaurant,pub?lock=55" alt="" loading="lazy">
+      <img src="https://loremflickr.com/600/450/restaurant,pub?lock=55" alt="" loading="lazy" decoding="async">
       <span class="ind-label">Restaurants &amp; pubs</span>
     </article>
     <article class="ind reveal d1">
-      <img src="https://loremflickr.com/600/450/barbershop,barber?lock=66" alt="" loading="lazy">
+      <img src="https://loremflickr.com/600/450/barbershop,barber?lock=66" alt="" loading="lazy" decoding="async">
       <span class="ind-label">Barbershops</span>
     </article>
     <article class="ind reveal d2">
-      <img src="https://loremflickr.com/600/450/dental,clinic?lock=77" alt="" loading="lazy">
+      <img src="https://loremflickr.com/600/450/dental,clinic?lock=77" alt="" loading="lazy" decoding="async">
       <span class="ind-label">Clinics &amp; waiting rooms</span>
     </article>
     <article class="ind reveal d3">
-      <img src="https://loremflickr.com/600/450/hotel,lobby?lock=88" alt="" loading="lazy">
+      <img src="https://loremflickr.com/600/450/hotel,lobby?lock=88" alt="" loading="lazy" decoding="async">
       <span class="ind-label">Hotels &amp; B&amp;Bs</span>
     </article>
   </div>
@@ -177,15 +188,19 @@
     <div class="deck-top">
       <span class="deck-dot" aria-hidden="true"></span>
       <span class="deck-label">OADIO · NOW PLAYING</span>
+      <span class="deck-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
     </div>
     <button class="track" data-src="audio/sample-cafe-lounge.mp3">
       <span class="track-play">▶</span><span class="track-name">Café Lounge</span><span class="track-time">sample</span>
+      <span class="track-progress" aria-hidden="true"></span>
     </button>
     <button class="track" data-src="audio/sample-gym-energy.mp3">
       <span class="track-play">▶</span><span class="track-name">Gym Energy</span><span class="track-time">sample</span>
+      <span class="track-progress" aria-hidden="true"></span>
     </button>
     <button class="track" data-src="audio/sample-smooth-jazz.mp3">
       <span class="track-play">▶</span><span class="track-name">Smooth Jazz</span><span class="track-time">sample</span>
+      <span class="track-progress" aria-hidden="true"></span>
     </button>
   </div>
   </div>
@@ -238,15 +253,76 @@
   </div>
 </section>
 
+<!-- COMPARE -->
+<section class="section" id="compare">
+  <p class="kicker reveal">the honest maths</p>
+  <h2 class="reveal d1">Three ways to fill the room.<br>One keeps the money.</h2>
+  <div class="compare-wrap reveal d2">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th scope="col">Per year, ex VAT</th>
+          <th scope="col">Spotify / YouTube in venue</th>
+          <th scope="col">TheMusicLicence route</th>
+          <th scope="col" class="col-oadio">Oadio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Legal for business use</th>
+          <td><span class="no">✗</span> personal-use terms forbid it</td>
+          <td><span class="yes">✓</span></td>
+          <td class="col-oadio"><span class="yes">✓</span></td>
+        </tr>
+        <tr>
+          <th scope="row">PRS + PPL fees</th>
+          <td>£450.99 still owed</td>
+          <td>£450.99</td>
+          <td class="col-oadio">£0</td>
+        </tr>
+        <tr>
+          <th scope="row">Music subscription</th>
+          <td>≈ £144</td>
+          <td>≈ £144 on top</td>
+          <td class="col-oadio">£150 flat</td>
+        </tr>
+        <tr>
+          <th scope="row">Risk if inspected</th>
+          <td>50% surcharge, fines to £5,000</td>
+          <td>none</td>
+          <td class="col-oadio">none — certificate included</td>
+        </tr>
+        <tr>
+          <th scope="row">Built for venues</th>
+          <td><span class="no">✗</span></td>
+          <td><span class="no">✗</span> licence only, no music</td>
+          <td class="col-oadio"><span class="yes">✓</span> 70+ playlists, spoken promos</td>
+        </tr>
+        <tr>
+          <th scope="row">Total per year</th>
+          <td>not legal anyway</td>
+          <td>≈ £595</td>
+          <td class="col-oadio">£150</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="compare-foot reveal">2026 published tariffs, ex VAT · TheMusicLicence ≤100m² audible area · streaming at typical premium rates</p>
+</section>
+
 <!-- PRICING -->
 <section class="section" id="pricing">
   <p class="kicker reveal">04 — the deal</p>
   <h2 class="reveal d1">Simple pricing.<br>No contracts.</h2>
+  <div class="bill-toggle reveal d2" role="group" aria-label="Billing period">
+    <button type="button" aria-pressed="true" data-bill="mo">Monthly</button>
+    <button type="button" aria-pressed="false" data-bill="yr">Yearly <span class="save">2 mo free</span></button>
+  </div>
   <div class="prices">
     <article class="price reveal">
       <h3>Core</h3>
-      <p class="amount">£15<span>/mo +VAT</span></p>
-      <p class="amount-alt">or £150/yr — 2 months free</p>
+      <p class="amount"><span class="amt-mo">£15<span class="per">/mo +VAT</span></span><span class="amt-yr">£150<span class="per">/yr +VAT</span></span></p>
+      <p class="amount-alt"><span class="amt-mo">or £150/yr — 2 months free</span><span class="amt-yr">works out £12.50 a month</span></p>
       <ul class="ticks">
         <li>Full playlist library</li>
         <li>Unlimited play, one site</li>
@@ -258,8 +334,8 @@
     <article class="price featured reveal d1">
       <span class="tag">Most popular</span>
       <h3>Plus</h3>
-      <p class="amount">£25<span>/mo +VAT</span></p>
-      <p class="amount-alt">or £250/yr</p>
+      <p class="amount"><span class="amt-mo">£25<span class="per">/mo +VAT</span></span><span class="amt-yr">£250<span class="per">/yr +VAT</span></span></p>
+      <p class="amount-alt"><span class="amt-mo">or £250/yr — 2 months free</span><span class="amt-yr">works out £20.83 a month</span></p>
       <ul class="ticks">
         <li>Everything in Core</li>
         <li>Spoken promos &amp; announcements</li>
@@ -311,6 +387,10 @@
 </section>
 
 </main>
+
+<div class="mobile-cta">
+  <a href="#trial" class="btn btn-solid">Start free trial — no card needed</a>
+</div>
 
 <footer class="site-footer">
   <div class="foot-grid">
