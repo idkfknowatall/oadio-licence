@@ -213,11 +213,12 @@ section,header,footer{position:relative;z-index:2}
 .trial-form input{flex:1;min-width:210px;padding:.95em 1.2em;border:0;border-radius:100px;font-family:inherit;font-size:1rem}
 .cta .btn-solid{background:var(--ink);border-color:var(--ink);color:#fff}
 .cta .btn-solid:hover{background:#fff;color:var(--ink)}
+.cta-go{margin:26px 0 6px}
 .cta-fine{font-size:.85rem;color:rgba(255,255,255,.92)}
 
 /* footer */
 .site-footer{background:var(--ink);color:rgba(243,233,216,.72);padding:56px 24px 28px}
-.foot-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;padding-bottom:34px;border-bottom:1px solid rgba(243,233,216,.14)}
+.foot-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:32px;padding-bottom:34px;border-bottom:1px solid rgba(243,233,216,.14)}
 .site-footer .brand-word{color:var(--paper)}
 .foot-tag{margin-top:12px;max-width:24em}
 .site-footer h4{color:var(--paper);font-family:"Hanken Grotesk",sans-serif;font-size:1rem;margin-bottom:10px}
