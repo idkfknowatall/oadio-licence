@@ -29,6 +29,10 @@ export async function onRequestPost({ request, env }) {
 
   if (!pairs.t || v1s.length === 0) return json({ error: "Invalid signature" }, 400);
 
+  // replay protection: reject signatures older than 5 minutes
+  const age = Math.abs(Math.floor(Date.now() / 1000) - Number(pairs.t));
+  if (isNaN(age) || age > 300) return json({ error: "Stale signature" }, 400);
+
   const encoder = new TextEncoder();
   const key = await crypto.subtle.importKey("raw", encoder.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
   const signature = await crypto.subtle.sign("HMAC", key, encoder.encode(`${pairs.t}.${body}`));
@@ -60,7 +64,9 @@ export async function onRequestPost({ request, env }) {
             }),
           });
         }
-      } catch (e) {}
+      } catch (e) {
+        console.error("webhook fulfilment failed:", e && e.message);
+      }
     }
   }
 

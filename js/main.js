@@ -76,7 +76,13 @@
     }
 
     // ---- Turnstile (loads only if a site key is configured) ----
+    // Submit button stays disabled until the widget has produced a token,
+    // so users can't fire a "Security check required" error by submitting
+    // before the challenge loads. If no site key is configured, we enable
+    // submit immediately (honeypot + server validation still protect the form).
     var turnstileSlot = document.getElementById('turnstile-slot')
+    var submitBtn = cform.querySelector('button[type=submit]')
+    if (submitBtn) submitBtn.disabled = true
     if (turnstileSlot) {
       fetch('/api/turnstile-key')
         .then(function (r) { return r.json() })
@@ -85,15 +91,29 @@
             var s = document.createElement('script')
             s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
             s.async = true; s.defer = true
+            s.onload = function () {
+              // Turnstile api.js calls the global callback once the token is ready
+              window.turnstileReady = window.turnstileReady || function () {
+                if (submitBtn) submitBtn.disabled = false
+              }
+            }
             document.head.appendChild(s)
             var w = document.createElement('div')
             w.className = 'cf-turnstile'
             w.setAttribute('data-sitekey', data.sitekey)
             w.setAttribute('data-theme', 'light')
+            w.setAttribute('data-callback', 'turnstileReady')
             turnstileSlot.appendChild(w)
+            // safety net: if Turnstile never fires the callback (e.g. user
+            // blocked it), re-enable after 6s so they're not stuck
+            setTimeout(function () { if (submitBtn) submitBtn.disabled = false }, 6000)
+          } else if (submitBtn) {
+            submitBtn.disabled = false
           }
         })
-        .catch(function () {})
+        .catch(function () { if (submitBtn) submitBtn.disabled = false })
+    } else if (submitBtn) {
+      submitBtn.disabled = false
     }
 
     var showMsg = function (text, good, email) {
@@ -194,7 +214,7 @@
     banner.textContent = cs === 'success'
       ? 'Thanks — your order is confirmed. Check your email for next steps.'
       : 'Checkout cancelled — no charge made. Email hello@oadio.com if you need a hand.'
-    banner.style.cssText = 'position:fixed;left:0;right:0;top:0;z-index:200;padding:14px 18px;text-align:center;font-family:"Hanken Grotesk",sans-serif;font-weight:700;color:#fff;background:' + (cs === 'success' ? '#1f5e54' : '#a8380f') + ';'
+    banner.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:max(16px,env(safe-area-inset-bottom));z-index:200;padding:14px 22px;text-align:center;font-family:"Hanken Grotesk",sans-serif;font-weight:700;color:#fff;background:' + (cs === 'success' ? '#1f5e54' : '#a8380f') + ';border-radius:100px;box-shadow:0 14px 34px -12px rgba(35,26,18,.55);max-width:calc(100% - 32px);'
     document.body.appendChild(banner)
     setTimeout(function () { banner.remove() }, 8000)
   }
