@@ -140,7 +140,7 @@ section,header,footer{position:relative;z-index:2}
 .reveal.d2{transition-delay:.18s}
 .reveal.d3{transition-delay:.27s}
 .reveal.d4{transition-delay:.36s}
-.mobile-cta{position:fixed;left:12px;right:88px;bottom:max(12px,env(safe-area-inset-bottom));z-index:70;display:none;transform:translateY(140%);transition:transform .3s var(--ease)}
+.mobile-cta{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:70;display:none;transform:translateY(140%);transition:transform .3s var(--ease)}
 .mobile-cta.show{transform:translateY(0)}
 .mobile-cta .btn{display:block;width:100%;box-sizing:border-box;box-shadow:0 14px 34px -12px rgba(35,26,18,.55)}
 .mobile-cta .btn-solid{background:var(--amber);border-color:var(--amber);color:#fff}
