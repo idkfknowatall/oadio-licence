@@ -1,0 +1,12 @@
+{
+  "name": "Oadio",
+  "short_name": "Oadio",
+  "description": "Radio hosting, web design, custom builds and consulting.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3e9d8",
+  "theme_color": "#f3e9d8",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

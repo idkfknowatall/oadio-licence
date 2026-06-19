@@ -12,3 +12,8 @@ node_modules/
 .env
 .env.*
 *.pem
+.dev.vars
+.dev.vars.*
+
+# Cloudflare Pages / Wrangler local state
+.wrangler/
