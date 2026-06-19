@@ -162,17 +162,6 @@ section,header,footer{position:relative;z-index:2}
 .legal-form-note a { color: var(--amber-2); text-decoration: underline; text-underline-offset: 3px; }
 .kicker.cat{color:var(--teal)}
 
-/* ---------- cookie consent banner ---------- */
-.cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:90;background:var(--ink);color:var(--paper);
-  padding:18px 24px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:center;
-  transform:translateY(110%);transition:transform .35s var(--ease);
-  box-shadow:0 -10px 30px -12px rgba(35,26,18,.5);font-size:.92rem}
-.cookie-banner.show{transform:none}
-.cookie-banner p{margin:0;flex:1;min-width:240px;max-width:60ch;color:rgba(243,233,216,.85)}
-.cookie-banner p a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
-.cookie-banner .btn{font-size:.88rem;padding:.6em 1.2em}
-.cookie-btns{display:flex;gap:10px;flex-wrap:wrap}
-
 @media(max-width:880px){
   .hero-inner{grid-template-columns:1fr;gap:24px}
   .receipt{max-width:420px;margin-top:8px}
@@ -193,8 +182,6 @@ section,header,footer{position:relative;z-index:2}
   .amount{font-size:2.3rem}
   .receipt{padding:22px 18px;word-break:break-word}
   .bill-toggle{flex-wrap:wrap;justify-content:center}
-  .cookie-banner{padding:16px;flex-direction:column;text-align:center;gap:12px}
-  .cookie-banner p{min-width:0}
 }
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}

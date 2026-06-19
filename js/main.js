@@ -1,4 +1,4 @@
-// Oadio — nav, scroll reveals, cookie consent, contact form.
+// Oadio — nav, scroll reveals, contact form.
 (function () {
   var toggle = document.querySelector('.nav-toggle')
   var links = document.querySelector('.nav-links')
@@ -55,41 +55,6 @@
     if (contactSec) new IntersectionObserver(function (es) {
       contactSeen = es[0].isIntersecting; updateCta()
     }).observe(contactSec)
-  }
-
-  // ---- Tawk.to live chat, gated behind cookie consent ----
-  var TAWK_SRC = 'https://embed.tawk.to/6a326d4916fcef1d436fa2d4/1jraflpo5'
-  var chatLoaded = false
-  var loadChat = function () {
-    if (chatLoaded || !TAWK_SRC) return
-    chatLoaded = true
-    window.Tawk_API = window.Tawk_API || {}
-    window.Tawk_LoadStart = new Date()
-    var ts = document.createElement('script')
-    ts.async = true; ts.src = TAWK_SRC; ts.charset = 'UTF-8'
-    ts.setAttribute('crossorigin', '*')
-    document.head.appendChild(ts)
-  }
-
-  // ---- cookie consent banner ----
-  var cb = document.querySelector('.cookie-banner')
-  if (cb) {
-    try {
-      var consent = localStorage.getItem('cookieConsent')
-      if (!consent) {
-        setTimeout(function () { cb.classList.add('show') }, 1200)
-      } else if (consent === 'full') {
-        loadChat()
-      }
-    } catch (e) { cb.classList.add('show') }
-    cb.addEventListener('click', function (e) {
-      var btn = e.target.closest('[data-consent]')
-      if (!btn) return
-      var type = btn.getAttribute('data-consent')
-      try { localStorage.setItem('cookieConsent', type) } catch (e) {}
-      cb.classList.remove('show')
-      if (type === 'full') loadChat()
-    })
   }
 
   // ---- contact form (POST /api/contact -> Resend; mailto fallback) ----
