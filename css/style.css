@@ -158,6 +158,8 @@ section,header,footer{position:relative;z-index:2}
 .field input, .field textarea, .field select { font-family: 'Hanken Grotesk', sans-serif; font-size: 1rem; color: var(--ink); background: #ffffff; border: 1.5px solid var(--ink-2); border-radius: 4px; padding: 0.75rem 1rem; width: 100%; box-sizing: border-box; }
 .field input::placeholder, .field textarea::placeholder { color: var(--ink-2); opacity: 0.85; }
 .field input:focus-visible, .field textarea:focus-visible, .field select:focus-visible { outline: 3px solid var(--amber-2); outline-offset: -1px; }
+#turnstile-slot{display:flex;justify-content:center;min-height:65px}
+#turnstile-slot .cf-turnstile{display:inline-block}
 .legal-form-note { font-size: 0.82rem; color: var(--ink-2); margin: 0; }
 .legal-form-note a { color: var(--amber-2); text-decoration: underline; text-underline-offset: 3px; }
 .kicker.cat{color:var(--teal)}
