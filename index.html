@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oadio Services — Radio Hosting, Web Design & Dev, Consulting</title>
     <meta name="description" content="Honest, no-nonsense pricing for radio hosting, in-store venue radio, web design, custom builds and consulting. Get your business online and on air — no hidden costs, no jargon.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://oadio.com/">
 
     <meta name="theme-color" content="#f3e9d8">
@@ -15,10 +16,11 @@
     <meta property="og:url" content="https://oadio.com/">
     <meta property="og:locale" content="en_GB">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://oadio.com/og-image.svg">
+    <meta name="twitter:image" content="https://oadio.com/og-image.png">
     <meta name="twitter:title" content="Oadio — Radio Hosting, Websites & Consulting">
     <meta name="twitter:description" content="Radio hosting, web design, custom builds and consulting. Honest pricing, no jargon.">
-    <meta property="og:image" content="https://oadio.com/og-image.svg">
+    <meta property="og:image" content="https://oadio.com/og-image.png">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Oadio — radio hosting, websites, builds & consulting">
@@ -39,20 +41,45 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Oadio",
-      "url": "https://oadio.com",
-      "logo": "https://oadio.com/icon.svg",
-      "description": "Radio hosting, in-store venue radio, web design, custom builds and consulting for growing businesses.",
-      "areaServed": "GB",
-      "knowsLanguage": "en-GB",
-      "contactPoint": { "@type": "ContactPoint", "email": "hello@oadio.com", "contactType": "customer service" },
-      "makesOffer": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Radio hosting" }, "price": "9.99", "priceCurrency": "GBP" },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "In-store radio" }, "price": "13.99", "priceCurrency": "GBP" },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web design" }, "price": "149.00", "priceCurrency": "GBP" },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom builds" }, "price": "1200.00", "priceCurrency": "GBP" },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Consulting" }, "price": "45.00", "priceCurrency": "GBP" }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://oadio.com/#organization",
+          "name": "Oadio",
+          "url": "https://oadio.com/",
+          "logo": { "@type": "ImageObject", "url": "https://oadio.com/icon.svg" },
+          "image": { "@type": "ImageObject", "url": "https://oadio.com/og-image.png", "width": 1200, "height": 630 },
+          "description": "Radio hosting, in-store venue radio, web design, custom builds and consulting for growing businesses.",
+          "contactPoint": { "@type": "ContactPoint", "email": "hello@oadio.com", "contactType": "customer service", "areaServed": "GB", "availableLanguage": "en-GB" },
+          "areaServed": "GB",
+          "knowsLanguage": "en-GB",
+          "hasOfferCatalog": { "@id": "https://oadio.com/#services-catalog" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://oadio.com/#website",
+          "name": "Oadio",
+          "url": "https://oadio.com/",
+          "inLanguage": "en-GB",
+          "publisher": { "@id": "https://oadio.com/#organization" }
+        },
+        {
+          "@type": "OfferCatalog",
+          "@id": "https://oadio.com/#services-catalog",
+          "name": "Oadio Services",
+          "itemListElement": [
+            { "@type": "Offer", "price": "9.99", "priceCurrency": "GBP", "url": "https://oadio.com/#radio",
+              "itemOffered": { "@type": "Service", "name": "Radio hosting", "description": "Shoutcast and Icecast hosting on AzuraCast with AutoDJ, global CDN and real-time analytics.", "serviceType": "Radio hosting", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
+            { "@type": "Offer", "price": "13.99", "priceCurrency": "GBP", "url": "https://oadio.com/#shop-radio",
+              "itemOffered": { "@type": "Service", "name": "In-store radio", "description": "Branded royalty-free background radio for venues — no PPL PRS music licence needed for our station.", "serviceType": "In-store radio", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
+            { "@type": "Offer", "price": "149", "priceCurrency": "GBP", "url": "https://oadio.com/#web-design",
+              "itemOffered": { "@type": "Service", "name": "Web design", "description": "Fast, fixed-price websites — landing pages, business sites and ecommerce.", "serviceType": "Web design", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
+            { "@type": "Offer", "price": "1200", "priceCurrency": "GBP", "url": "https://oadio.com/#web-dev",
+              "itemOffered": { "@type": "Service", "name": "Custom builds", "description": "Bespoke web apps, API and payment integrations, and workflow automation.", "serviceType": "Custom web development", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
+            { "@type": "Offer", "price": "45", "priceCurrency": "GBP", "url": "https://oadio.com/#consulting",
+              "itemOffered": { "@type": "Service", "name": "Consulting", "description": "Practical tech and growth consulting — hourly, strategy days and retainers.", "serviceType": "Consulting", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } }
+          ]
+        }
       ]
     }
     </script>
@@ -63,7 +90,7 @@
 
     <header class="site-header">
         <nav class="nav">
-            <a href="index.html" class="brand">
+            <a href="/" class="brand">
                 <span class="brand-mark"></span>
                 <span class="brand-word">oadio</span>
             </a>
@@ -74,8 +101,8 @@
                 <li><a href="#web-design">Websites</a></li>
                 <li><a href="#web-dev">Build</a></li>
                 <li><a href="#consulting">Advice</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html" class="btn btn-pill">Contact</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact" class="btn btn-pill">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -89,7 +116,7 @@
                     <p class="lede reveal d2">Honest, no-nonsense pricing for radio hosting, web design, and the hands-on tech help growing businesses actually need. No hidden costs. No jargon.</p>
                     <div class="hero-ctas reveal d3">
                         <a href="#radio" class="btn btn-solid">See plans</a>
-                        <a href="contact.html" class="btn btn-line">Talk to us</a>
+                        <a href="/contact" class="btn btn-line">Talk to us</a>
                     </div>
                 </div>
                 <div class="receipt reveal d2" aria-hidden="true">
@@ -261,7 +288,7 @@
                             <li>Training provided</li>
                             <li>12mo support</li>
                         </ul>
-                        <a class="btn btn-line" href="contact.html?service=ecommerce&budget=900">Get a quote</a>
+                        <a class="btn btn-line" href="/contact?service=ecommerce&budget=900">Get a quote</a>
                     </article>
                 </div>
             </div>
@@ -284,7 +311,7 @@
                             <li>Workflow automation</li>
                             <li>Ongoing care &amp; updates</li>
                         </ul>
-                        <a class="btn btn-solid" href="contact.html?service=custom&budget=1200" style="display: block; text-align: center;">Get a quote</a>
+                        <a class="btn btn-solid" href="/contact?service=custom&budget=1200" style="display: block; text-align: center;">Get a quote</a>
                     </article>
                 </div>
             </div>
@@ -312,7 +339,7 @@
                             <li>No commitment</li>
                             <li>Ad-hoc advice</li>
                         </ul>
-                        <a class="btn btn-line" href="contact.html?service=consulting">Enquire</a>
+                        <a class="btn btn-line" href="/contact?service=consulting">Enquire</a>
                     </article>
 
                     <article class="price featured reveal d2">
@@ -348,18 +375,18 @@
     </main>
 
     <div class="mobile-cta">
-        <a href="contact.html" class="btn btn-solid">Talk to us</a>
+        <a href="/contact" class="btn btn-solid">Talk to us</a>
     </div>
 
     <footer class="site-footer">
         <div class="foot-grid">
             <div>
-                <a href="index.html" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-word">oadio</span></a>
+                <a href="/" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-word">oadio</span></a>
                 <p class="foot-tag">Radio hosting, websites &amp; hands-on help for growing businesses.</p>
             </div>
             <div><h3>Services</h3><p><a href="#radio">Radio hosting</a></p><p><a href="#shop-radio">In-store radio</a></p><p><a href="#web-design">Websites</a></p><p><a href="#consulting">Consulting</a></p></div>
-            <div><h3>Company</h3><p><a href="faq.html">FAQ</a></p><p><a href="contact.html">Contact</a></p><p><a href="https://billing.stripe.com/p/login/8x26oG4LE1Jm8Xle5O7ss00" target="_blank" rel="noopener">Manage subscription</a></p><p><a href="mailto:hello@oadio.com">hello@oadio.com</a></p></div>
-            <div><h3>Legal</h3><p><a href="privacy.html">Privacy</a></p><p><a href="terms.html">Terms</a></p></div>
+            <div><h3>Company</h3><p><a href="/faq">FAQ</a></p><p><a href="/contact">Contact</a></p><p><a href="https://billing.stripe.com/p/login/8x26oG4LE1Jm8Xle5O7ss00" target="_blank" rel="noopener">Manage subscription</a></p><p><a href="mailto:hello@oadio.com">hello@oadio.com</a></p></div>
+            <div><h3>Legal</h3><p><a href="/privacy">Privacy</a></p><p><a href="/terms">Terms</a></p></div>
         </div>
         <p class="foot-base">© 2026 Oadio</p>
     </footer>
