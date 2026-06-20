@@ -13,6 +13,17 @@ export async function onRequestPost({ request, env }) {
   const secret = env.STRIPE_SECRET_KEY;
   if (!secret) return json({ error: "Checkout not configured" }, 503);
 
+  // Lightweight per-IP rate limit so this public endpoint can't be scripted to
+  // spam Stripe session creation. Graceful — only active when OADIO_KV is bound.
+  // For robust protection also add a Cloudflare Rate Limiting rule on this path.
+  if (env.OADIO_KV) {
+    const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+    const rlKey = `rl:checkout:${ip}`;
+    const n = Number(await env.OADIO_KV.get(rlKey)) || 0;
+    if (n >= 10) return json({ error: "Too many requests — try again shortly." }, 429);
+    await env.OADIO_KV.put(rlKey, String(n + 1), { expirationTtl: 60 });
+  }
+
   let sku;
   try {
     ({ sku } = await request.json());
