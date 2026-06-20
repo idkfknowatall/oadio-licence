@@ -1,3 +1,9 @@
+# Never let these be cached (defense-in-depth; they should not be deployed at all).
+/.dev.vars
+  Cache-Control: no-store
+/.dev.vars.example
+  Cache-Control: no-store
+
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
