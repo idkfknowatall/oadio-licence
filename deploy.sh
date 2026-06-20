@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-# Deploy oadio.com to Cloudflare Pages (direct upload).
+# Deploy oadio.com to Cloudflare Pages (direct upload).  Run: ./deploy.sh
 #
-# Pages has no .pagesignore/.assetsignore for `pages deploy`, so it would upload
-# .dev.vars (local secrets) as a PUBLIC static asset. A prior deploy did exactly
-# that and leaked RESEND_API_KEY. This script stashes the dev-secret files out of
-# the upload directory for the duration of the deploy, then restores them — even
-# if the deploy fails.
+# Pages uploads everything in this directory as public static assets and honors no
+# ignore file for `pages deploy`. This script moves local-only files (.dev.vars*)
+# out of the upload directory for the duration of the deploy and restores them
+# afterward (trap on EXIT), so they are never published.
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -24,4 +23,5 @@ for f in "${SECRETS[@]}"; do
   [ -e "./$f" ] && mv "./$f" "$STASH/$f"
 done
 
-npx wrangler pages deploy . --project-name oadio --branch main --commit-dirty=true
+# dir + project name + KV binding come from wrangler.toml (pages_build_output_dir).
+npx wrangler pages deploy --branch main --commit-dirty=true

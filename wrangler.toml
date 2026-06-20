@@ -1,0 +1,10 @@
+# Cloudflare Pages config for the `oadio` project.
+# Defines the OADIO_KV binding so it's applied on every `./deploy.sh` (the dashboard
+# has no binding set; this keeps it as code). Deploy with ./deploy.sh, not bare wrangler.
+name = "oadio"
+pages_build_output_dir = "."
+compatibility_date = "2024-11-01"
+
+[[kv_namespaces]]
+binding = "OADIO_KV"
+id = "b399037afe0d4fb8865e08626ab4538b"
