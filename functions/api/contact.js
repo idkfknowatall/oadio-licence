@@ -48,6 +48,6 @@ export async function onRequestPost({ request, env }) {
     }),
   });
 
-  if (!res.ok) return json({ error: "Couldn't send right now — please try again." }, 502);
+  if (!res.ok) return json({ error: "Couldn't send right now. Please try again." }, 502);
   return json({ ok: true });
 }

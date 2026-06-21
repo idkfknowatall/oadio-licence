@@ -1,4 +1,4 @@
-// Stripe webhook — verifies signature, fulfils checkout.session.completed.
+// Stripe webhook: verifies signature, fulfils checkout.session.completed.
 // Emails the customer (welcome), notifies the owner of the sale, and alerts the
 // owner if fulfilment fails so a paid order is never silently lost.
 // Idempotency + replay protection use the OADIO_KV binding when present (graceful
@@ -46,7 +46,7 @@ export async function onRequestPost({ request, env }) {
 
   if (!pairs.t || v1s.length === 0) return json({ error: "Invalid signature" }, 400);
 
-  // replay protection: reject signatures older than 5 minutes. One-sided — a
+  // replay protection: reject signatures older than 5 minutes. One-sided: a
   // small future skew (clock drift) is tolerated, far-future timestamps are not.
   const age = Math.floor(Date.now() / 1000) - Number(pairs.t);
   if (isNaN(age) || age > 300 || age < -30) return json({ error: "Stale signature" }, 400);
@@ -91,7 +91,7 @@ export async function onRequestPost({ request, env }) {
               from: env.RESEND_FROM || "Oadio <hello@oadio.com>",
               to: customerEmail,
               subject: "Welcome to Oadio",
-              text: "Thanks for your order — this confirms your purchase. We'll be in touch very shortly with the next steps to get you set up.",
+              text: "Thanks for your order. This confirms your purchase. We'll be in touch very shortly with the next steps to get you set up.",
             }),
           });
           if (!cres.ok) throw new Error(`welcome email rejected (${cres.status})`);
@@ -103,7 +103,7 @@ export async function onRequestPost({ request, env }) {
         console.error("webhook fulfilment failed:", e && e.message);
         // Alert the owner so a paid-but-not-fulfilled order is never silently lost.
         try {
-          await notifyOwner(env, "⚠ Oadio fulfilment FAILED", `Event: ${event.id}\nSession: ${session && session.id}\nError: ${e && e.message}\n\nThe customer has paid — follow up manually.`);
+          await notifyOwner(env, "⚠ Oadio fulfilment FAILED", `Event: ${event.id}\nSession: ${session && session.id}\nError: ${e && e.message}\n\nThe customer has paid. Follow up manually.`);
         } catch (_) { /* nothing more we can do */ }
       }
     }
