@@ -1,4 +1,4 @@
-// Oadio — nav, scroll reveals, contact form.
+// Oadio, nav, scroll reveals, contact form.
 (function () {
   var toggle = document.querySelector('.nav-toggle')
   var links = document.querySelector('.nav-links')
@@ -184,7 +184,7 @@
         .then(function (res) {
           if (res.ok && res.d.ok) {
             cform.reset()
-            showMsg('Thanks — message sent. We\'ll be in touch within a few hours.', true)
+            showMsg('Thanks, message sent. We\'ll be in touch within a few hours.', true)
             btn.disabled = false; btn.textContent = orig
           } else { throw new Error((res.d && res.d.error) || 'failed') }
         })
@@ -194,7 +194,7 @@
           if (serverMsg) {
             showMsg(serverMsg, false)
           } else {
-            showMsg('Sorry — couldn\'t send just now. Please try again or email us at', false, 'hello@oadio.com')
+            showMsg('Sorry, couldn\'t send just now. Please try again or email us at', false, 'hello@oadio.com')
           }
         })
     })
@@ -234,8 +234,8 @@
     var banner = document.createElement('div')
     banner.setAttribute('role', 'status')
     banner.textContent = cs === 'success'
-      ? 'Thanks — your order is confirmed. Check your email for next steps.'
-      : 'Checkout cancelled — no charge made. Email hello@oadio.com if you need a hand.'
+      ? 'Thanks, your order is confirmed. Check your email for next steps.'
+      : 'Checkout cancelled, no charge made. Email hello@oadio.com if you need a hand.'
     banner.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:max(16px,env(safe-area-inset-bottom));z-index:200;padding:14px 22px;text-align:center;font-family:"Hanken Grotesk",sans-serif;font-weight:700;color:#fff;background:' + (cs === 'success' ? '#1f5e54' : '#a8380f') + ';border-radius:100px;box-shadow:0 14px 34px -12px rgba(35,26,18,.55);max-width:calc(100% - 32px);'
     document.body.appendChild(banner)
     setTimeout(function () { banner.remove() }, 8000)
