@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/style.css?v=7">
 <style>
   .legal{max-width:820px;margin:0 auto;padding:0 24px}
   .legal h2{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:600;margin:46px 0 14px;color:var(--ink)}
@@ -61,13 +61,19 @@
     </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     <ul class="nav-links">
-      <li><a href="/#radio">Radio</a></li>
-      <li><a href="/#web-design">Websites</a></li>
-      <li><a href="/#web-dev">Build</a></li>
-      <li><a href="/#consulting">Advice</a></li>
-      <li><a href="/faq">FAQ</a></li>
-      <li><a href="/contact" class="btn btn-pill">Contact</a></li>
-    </ul>
+                <li class="has-dropdown">
+                    <button type="button" class="nav-drop-toggle" aria-expanded="false" aria-controls="services-menu">Services <span class="caret" aria-hidden="true"></span></button>
+                    <div class="nav-panel" id="services-menu" role="menu" aria-label="Services">
+                        <a role="menuitem" href="/radio"><span>Radio hosting</span><b>from £9.99/mo</b></a>
+                        <a role="menuitem" href="/in-store"><span>In-store radio</span><b>from £13.99/mo</b></a>
+                        <a role="menuitem" href="/websites"><span>Websites</span><b>from £149</b></a>
+                        <a role="menuitem" href="/builds"><span>Custom builds</span><b>from £1,200</b></a>
+                        <a role="menuitem" href="/consulting"><span>Consulting</span><b>from £45/hr</b></a>
+                    </div>
+                </li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact" class="btn btn-pill">Contact</a></li>
+            </ul>
   </nav>
 </header>
 
@@ -146,13 +152,13 @@
       <a href="/" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-word">oadio</span></a>
       <p class="foot-tag">Radio hosting, websites &amp; hands-on help for growing businesses.</p>
     </div>
-    <div><h3>Services</h3><p><a href="/#radio">Radio hosting</a></p><p><a href="/#web-design">Websites</a></p><p><a href="/#consulting">Consulting</a></p></div>
+    <div><h3>Services</h3><p><a href="/radio">Radio hosting</a></p><p><a href="/in-store">In-store radio</a></p><p><a href="/websites">Websites</a></p><p><a href="/builds">Custom builds</a></p><p><a href="/consulting">Consulting</a></p></div>
     <div><h3>Company</h3><p><a href="/faq">FAQ</a></p><p><a href="/contact">Contact</a></p><p><a href="https://billing.stripe.com/p/login/8x26oG4LE1Jm8Xle5O7ss00" target="_blank" rel="noopener">Manage subscription</a></p><p><a href="mailto:hello@oadio.com">hello@oadio.com</a></p></div>
     <div><h3>Legal</h3><p><a href="/privacy">Privacy</a></p><p><a href="/terms">Terms</a></p></div>
   </div>
   <p class="foot-base">© 2026 Oadio</p>
 </footer>
 
-<script src="js/main.js?v=6"></script>
+<script src="js/main.js?v=7"></script>
 </body>
 </html>

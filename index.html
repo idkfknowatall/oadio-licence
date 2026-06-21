@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/style.css?v=7">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.svg">
@@ -68,15 +68,15 @@
           "@id": "https://oadio.com/#services-catalog",
           "name": "Oadio Services",
           "itemListElement": [
-            { "@type": "Offer", "price": "9.99", "priceCurrency": "GBP", "url": "https://oadio.com/#radio",
+            { "@type": "Offer", "price": "9.99", "priceCurrency": "GBP", "url": "https://oadio.com/radio",
               "itemOffered": { "@type": "Service", "name": "Radio hosting", "description": "Shoutcast and Icecast hosting on AzuraCast with AutoDJ, global CDN and real-time analytics.", "serviceType": "Radio hosting", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
-            { "@type": "Offer", "price": "13.99", "priceCurrency": "GBP", "url": "https://oadio.com/#shop-radio",
+            { "@type": "Offer", "price": "13.99", "priceCurrency": "GBP", "url": "https://oadio.com/in-store",
               "itemOffered": { "@type": "Service", "name": "In-store radio", "description": "Branded royalty-free background radio for venues — no PPL PRS music licence needed for our station.", "serviceType": "In-store radio", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
-            { "@type": "Offer", "price": "149", "priceCurrency": "GBP", "url": "https://oadio.com/#web-design",
+            { "@type": "Offer", "price": "149", "priceCurrency": "GBP", "url": "https://oadio.com/websites",
               "itemOffered": { "@type": "Service", "name": "Web design", "description": "Fast, fixed-price websites — landing pages, business sites and ecommerce.", "serviceType": "Web design", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
-            { "@type": "Offer", "price": "1200", "priceCurrency": "GBP", "url": "https://oadio.com/#web-dev",
+            { "@type": "Offer", "price": "1200", "priceCurrency": "GBP", "url": "https://oadio.com/builds",
               "itemOffered": { "@type": "Service", "name": "Custom builds", "description": "Bespoke web apps, API and payment integrations, and workflow automation.", "serviceType": "Custom web development", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
-            { "@type": "Offer", "price": "45", "priceCurrency": "GBP", "url": "https://oadio.com/#consulting",
+            { "@type": "Offer", "price": "45", "priceCurrency": "GBP", "url": "https://oadio.com/consulting",
               "itemOffered": { "@type": "Service", "name": "Consulting", "description": "Practical tech and growth consulting — hourly, strategy days and retainers.", "serviceType": "Consulting", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } }
           ]
         }
@@ -96,11 +96,16 @@
             </a>
             <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
             <ul class="nav-links">
-                <li><a href="#radio">Radio</a></li>
-                <li><a href="#shop-radio">In-Store</a></li>
-                <li><a href="#web-design">Websites</a></li>
-                <li><a href="#web-dev">Build</a></li>
-                <li><a href="#consulting">Advice</a></li>
+                <li class="has-dropdown">
+                    <button type="button" class="nav-drop-toggle" aria-expanded="false" aria-controls="services-menu">Services <span class="caret" aria-hidden="true"></span></button>
+                    <div class="nav-panel" id="services-menu" role="menu" aria-label="Services">
+                        <a role="menuitem" href="/radio"><span>Radio hosting</span><b>from £9.99/mo</b></a>
+                        <a role="menuitem" href="/in-store"><span>In-store radio</span><b>from £13.99/mo</b></a>
+                        <a role="menuitem" href="/websites"><span>Websites</span><b>from £149</b></a>
+                        <a role="menuitem" href="/builds"><span>Custom builds</span><b>from £1,200</b></a>
+                        <a role="menuitem" href="/consulting"><span>Consulting</span><b>from £45/hr</b></a>
+                    </div>
+                </li>
                 <li><a href="/faq">FAQ</a></li>
                 <li><a href="/contact" class="btn btn-pill">Contact</a></li>
             </ul>
@@ -115,13 +120,14 @@
                     <h1 class="reveal d1">Everything your business runs on. <em>One bill.</em></h1>
                     <p class="lede reveal d2">Honest, no-nonsense pricing for radio hosting, web design, and the hands-on tech help growing businesses actually need. No hidden costs. No jargon.</p>
                     <div class="hero-ctas reveal d3">
-                        <a href="#radio" class="btn btn-solid">See plans</a>
+                        <a href="#services" class="btn btn-solid">See services</a>
                         <a href="/contact" class="btn btn-line">Talk to us</a>
                     </div>
                 </div>
                 <div class="receipt reveal d2" aria-hidden="true">
                     <div class="receipt-head"><span class="deck-dot"></span> OADIO — SERVICES</div>
                     <div class="receipt-line"><span>Radio hosting</span><b>from £9.99/mo</b></div>
+                    <div class="receipt-line"><span>In-store radio</span><b>from £13.99/mo</b></div>
                     <div class="receipt-line"><span>Websites</span><b>from £149</b></div>
                     <div class="receipt-line"><span>Custom builds</span><b>from £1,200</b></div>
                     <div class="receipt-line"><span>Consulting</span><b>from £45/hr</b></div>
@@ -133,242 +139,47 @@
             </div>
         </section>
 
-        <section class="section" id="radio">
-            <div style="max-width: var(--maxw); margin: 0 auto; padding: 0 24px;">
-                <p class="kicker cat reveal">Broadcast</p>
-                <h2 class="reveal d1">Host your own station.</h2>
-                <p class="section-lede reveal d2">Shoutcast and Icecast hosting on the AzuraCast control panel — built-in AutoDJ, live request/scheduling, real-time analytics and a slick web player. Everything you need to get on air, with rock-solid support whenever you need it.</p>
+        <section class="section" id="services" aria-labelledby="svc-heading">
+            <p class="kicker reveal">What we do</p>
+            <h2 id="svc-heading" class="reveal d1">Five services. One supplier.</h2>
+            <p class="section-lede reveal d2">Pick what you need — each runs on honest, no-surprises pricing. Open one for plans and to get started.</p>
 
-                <div class="bill-toggle reveal d2" role="group" aria-label="Billing period">
-                    <button type="button" aria-pressed="true" data-bill="mo">Monthly</button>
-                    <button type="button" aria-pressed="false" data-bill="yr">Annual <span class="save">3 months free</span></button>
-                </div>
-
-                <div class="prices">
-                    <article class="price reveal d1">
-                        <h3>Starter</h3>
-                        <p class="amount"><span class="amt-mo">£9.99<span class="per">/mo +VAT</span></span><span class="amt-yr">£89.91<span class="per">/yr +VAT</span></span></p>
-                        <p class="amount-alt"><span class="amt-mo">Perfect for hobbyists</span><span class="amt-yr">3 months free · works out £7.49/mo</span></p>
-                        <ul class="ticks">
-                            <li>10 GB storage</li>
-                            <li>150 listeners</li>
-                            <li>Up to 128 kbps</li>
-                            <li>Global CDN · low latency</li>
-                            <li>AzuraCast + AutoDJ</li>
-                            <li>Advanced stats · email support</li>
-                        </ul>
-                        <button class="btn btn-solid" data-sku="radio_starter" data-annual="1">Subscribe</button>
-                    </article>
-
-                    <article class="price featured reveal d2">
-                        <span class="tag">Most popular</span>
-                        <h3>Pro</h3>
-                        <p class="amount"><span class="amt-mo">£39<span class="per">/mo +VAT</span></span><span class="amt-yr">£351<span class="per">/yr +VAT</span></span></p>
-                        <p class="amount-alt"><span class="amt-mo">The sweet spot</span><span class="amt-yr">3 months free · works out £29.25/mo</span></p>
-                        <ul class="ticks">
-                            <li>30 GB storage</li>
-                            <li>500 listeners</li>
-                            <li>Up to 192 kbps</li>
-                            <li>Global CDN · low latency</li>
-                            <li>AzuraCast + AutoDJ</li>
-                            <li>Advanced stats · priority support</li>
-                        </ul>
-                        <button class="btn btn-solid" data-sku="radio_pro" data-annual="1">Subscribe</button>
-                    </article>
-
-                    <article class="price reveal d3">
-                        <h3>Broadcaster</h3>
-                        <p class="amount"><span class="amt-mo">£149<span class="per">/mo +VAT</span></span><span class="amt-yr">£1,341<span class="per">/yr +VAT</span></span></p>
-                        <p class="amount-alt"><span class="amt-mo">For serious operations</span><span class="amt-yr">3 months free · works out £111.75/mo</span></p>
-                        <ul class="ticks">
-                            <li>50 GB storage</li>
-                            <li>1,500 listeners</li>
-                            <li>Up to 256 kbps</li>
-                            <li>Global CDN · low latency</li>
-                            <li>AzuraCast + multi-stream</li>
-                            <li>Advanced stats · priority support</li>
-                        </ul>
-                        <button class="btn btn-solid" data-sku="radio_broadcaster" data-annual="1">Subscribe</button>
-                    </article>
-                </div>
-                <p class="reveal d3" style="margin-top:26px;font-size:.92rem;line-height:1.6;color:var(--ink-2);max-width:64ch;">Every plan runs on <strong>AzuraCast</strong> with AutoDJ, advanced real-time analytics, 24/7 streaming, geo/IP blocking and DDoS protection. <strong>StereoTool</strong> broadcast audio processing is available as a paid add-on (sold separately) — just ask us to enable it on your station.</p>
-            </div>
-        </section>
-
-        <section class="section" id="shop-radio">
-            <div style="max-width: var(--maxw); margin: 0 auto; padding: 0 24px;">
-                <p class="kicker cat reveal">In-store radio</p>
-                <h2 class="reveal d1">Your own radio station. No music-licence fees.</h2>
-                <p class="section-lede reveal d2">Branded background radio for your venue — royalty-free music, 24/7, on our global network. Cheaper than the big background-music services, with your own AI presenter on call.</p>
-
-                <div class="bill-toggle reveal d2" role="group" aria-label="Billing period">
-                    <button type="button" aria-pressed="true" data-bill="mo">Monthly</button>
-                    <button type="button" aria-pressed="false" data-bill="yr">Annual <span class="save">3 months free</span></button>
-                </div>
-
-                <div class="prices" style="grid-template-columns:repeat(2,1fr); max-width:760px; margin-left:auto; margin-right:auto;">
-                    <article class="price featured reveal d1">
-                        <span class="tag">No PPL PRS*</span>
-                        <h3>In-Store</h3>
-                        <p class="amount"><span class="amt-mo">£13.99<span class="per">/mo +VAT</span></span><span class="amt-yr">£125.91<span class="per">/yr +VAT</span></span></p>
-                        <p class="amount-alt"><span class="amt-mo">Per venue</span><span class="amt-yr">3 months free · works out £10.49/mo</span></p>
-                        <ul class="ticks">
-                            <li>Branded station, your name</li>
-                            <li>Royalty-free music 24/7</li>
-                            <li>No TheMusicLicence for our station*</li>
-                            <li>Global CDN · low latency</li>
-                            <li>No app, no install — just a stream link</li>
-                            <li>Plays in any browser · stable internet is all you need</li>
-                            <li>Run &amp; kept online by us</li>
-                        </ul>
-                        <button class="btn btn-solid" data-sku="shopradio" data-annual="1">Start your station</button>
-                    </article>
-
-                    <article class="price reveal d2">
-                        <h3>AI Promo Pack</h3>
-                        <p class="amount">£49<span class="per"> +VAT</span></p>
-                        <p class="amount-alt">One-off · up to 6 promos</p>
-                        <ul class="ticks">
-                            <li>Your offers, in an AI voice</li>
-                            <li>Baked into your stream</li>
-                            <li>Up to 6 spots, one voice</li>
-                            <li>Weekly refresh or extra voices — just ask</li>
-                        </ul>
-                        <button class="btn btn-solid" data-sku="shopradio_promos">Add promos</button>
-                    </article>
-                </div>
-                <p class="reveal d3" style="margin-top:26px;font-size:.92rem;line-height:1.6;color:var(--ink-2);max-width:64ch;"><strong>* About licensing:</strong> TheMusicLicence (PPL PRS) is required to play commercial music — FM/DAB radio, Spotify, CDs or live performances. Our station plays only royalty-free music we licence for the job, so you don't need TheMusicLicence to play <em>it</em>. If you also play commercial radio, TV with sound, or live music in your venue, those still need their own licence.</p>
-            </div>
-        </section>
-
-        <section class="section section-warm" id="web-design">
-            <div style="max-width: var(--maxw); margin: 0 auto; padding: 0 24px;">
-                <p class="kicker cat reveal">Websites</p>
-                <h2 class="reveal d1">A site that earns its keep.</h2>
-                <p class="section-lede reveal d2">Fast, modern websites with fixed prices and zero surprises. Because you shouldn't need a mortgage to look good online and load quickly on bad 4G.</p>
-
-                <div class="prices">
-                    <article class="price reveal d1">
-                        <h3>Landing</h3>
-                        <p class="amount">£149<span class="per"> +VAT</span></p>
-                        <p class="amount-alt">One-off build</p>
-                        <ul class="ticks">
-                            <li>One page</li>
-                            <li>Mobile-perfect</li>
-                            <li>SSL included</li>
-                            <li>Contact form</li>
-                            <li>Basic SEO</li>
-                        </ul>
-                        <button class="btn btn-solid" data-sku="webdesign_landing">Buy now</button>
-                    </article>
-
-                    <article class="price featured reveal d2">
-                        <span class="tag">Most popular</span>
-                        <h3>Business</h3>
-                        <p class="amount">£499<span class="per"> +VAT</span></p>
-                        <p class="amount-alt">One-off build</p>
-                        <ul class="ticks">
-                            <li>Up to 5 pages</li>
-                            <li>Simple CMS</li>
-                            <li>SEO setup</li>
-                            <li>12mo support</li>
-                            <li>Mobile-perfect</li>
-                        </ul>
-                        <button class="btn btn-solid" data-sku="webdesign_business">Buy now</button>
-                    </article>
-
-                    <article class="price reveal d3">
-                        <h3>Ecommerce</h3>
-                        <p class="amount">from £900<span class="per"> +VAT</span></p>
-                        <p class="amount-alt">Custom build</p>
-                        <ul class="ticks">
-                            <li>Full shop</li>
-                            <li>Payments setup</li>
-                            <li>Product setup</li>
-                            <li>Training provided</li>
-                            <li>12mo support</li>
-                        </ul>
-                        <a class="btn btn-line" href="/contact?service=ecommerce&budget=900">Get a quote</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="web-dev">
-            <div style="max-width: var(--maxw); margin: 0 auto; padding: 0 24px;">
-                <p class="kicker cat reveal">Custom builds</p>
-                <h2 class="reveal d1">Custom builds, done right.</h2>
-                <p class="section-lede reveal d2">Web apps, tricky integrations, and clever automations. We build bespoke tools that replace tedious manual admin. £30/hr or fixed project quotes, scoped up front.</p>
-
-                <div class="prices" style="grid-template-columns:1fr; max-width:560px; margin:34px auto 0;">
-                    <article class="price featured reveal d1">
-                        <h3>Custom project</h3>
-                        <p class="amount">from £1,200<span class="per"> / project +VAT</span></p>
-                        <p class="amount-alt">Scoped and quoted up front — no surprises.</p>
-                        <ul class="ticks" style="margin-bottom: 2rem;">
-                            <li>Custom code &amp; web apps</li>
-                            <li>API &amp; payment integrations</li>
-                            <li>Workflow automation</li>
-                            <li>Ongoing care &amp; updates</li>
-                        </ul>
-                        <a class="btn btn-solid" href="/contact?service=custom&budget=1200" style="display: block; text-align: center;">Get a quote</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section section-warm" id="consulting">
-            <div style="max-width: var(--maxw); margin: 0 auto; padding: 0 24px;">
-                <p class="kicker cat reveal">Consulting</p>
-                <h2 class="reveal d1">Borrow our brain.</h2>
-                <p class="section-lede reveal d2">Practical tech and growth help for growing businesses. We skip the buzzwords and keep it plain English.</p>
-
-                <div class="bill-toggle reveal d2" role="group" aria-label="Billing period">
-                    <button type="button" aria-pressed="true" data-bill="mo">Monthly</button>
-                    <button type="button" aria-pressed="false" data-bill="yr">Annual <span class="save">3 months free</span></button>
-                </div>
-
-                <div class="prices">
-                    <article class="price reveal d1">
-                        <h3>Hourly</h3>
-                        <p class="amount">£45<span class="per">/hr +VAT</span></p>
-                        <p class="amount-alt">Pay as you go</p>
-                        <ul class="ticks">
-                            <li>Screen-share</li>
-                            <li>Plain English</li>
-                            <li>No commitment</li>
-                            <li>Ad-hoc advice</li>
-                        </ul>
-                        <a class="btn btn-line" href="/contact?service=consulting">Enquire</a>
-                    </article>
-
-                    <article class="price featured reveal d2">
-                        <span class="tag">Deep dive</span>
-                        <h3>Strategy day</h3>
-                        <p class="amount">£300<span class="per"> +VAT</span></p>
-                        <p class="amount-alt">One-off booking</p>
-                        <ul class="ticks">
-                            <li>Full day</li>
-                            <li>Audit + action plan</li>
-                            <li>Follow-up notes</li>
-                            <li>Dedicated focus</li>
-                        </ul>
-                        <button class="btn btn-solid" data-sku="consulting_day">Book a day</button>
-                    </article>
-
-                    <article class="price reveal d3">
-                        <h3>Retainer</h3>
-                        <p class="amount"><span class="amt-mo">£400<span class="per">/mo +VAT</span></span><span class="amt-yr">£3,600<span class="per">/yr +VAT</span></span></p>
-                        <p class="amount-alt"><span class="amt-mo">Ongoing support</span><span class="amt-yr">3 months free · works out £300/mo</span></p>
-                        <ul class="ticks">
-                            <li>Priority access</li>
-                            <li>~2 days/mo</li>
-                            <li>Monthly call</li>
-                            <li>Proactive ideas</li>
-                        </ul>
-                        <button class="btn btn-solid" data-sku="consulting_retainer" data-annual="1">Start retainer</button>
-                    </article>
-                </div>
+            <div class="svc-grid">
+                <article class="svc-card reveal d1">
+                    <p class="kicker cat">Broadcast</p>
+                    <h3>Radio hosting</h3>
+                    <p>Host your own station on AzuraCast — AutoDJ, global CDN and real-time stats.</p>
+                    <p class="svc-price">from <b>£9.99</b>/mo</p>
+                    <a class="svc-link" href="/radio">See plans <span class="arr" aria-hidden="true">→</span></a>
+                </article>
+                <article class="svc-card reveal d2">
+                    <p class="kicker cat">Background music</p>
+                    <h3>In-store radio</h3>
+                    <p>Branded background radio for your venue — royalty-free, no music-licence fees.</p>
+                    <p class="svc-price">from <b>£13.99</b>/mo</p>
+                    <a class="svc-link" href="/in-store">See plans <span class="arr" aria-hidden="true">→</span></a>
+                </article>
+                <article class="svc-card reveal d3">
+                    <p class="kicker cat">Web design</p>
+                    <h3>Websites</h3>
+                    <p>Fast, fixed-price sites — landing pages, business sites and ecommerce.</p>
+                    <p class="svc-price">from <b>£149</b></p>
+                    <a class="svc-link" href="/websites">See plans <span class="arr" aria-hidden="true">→</span></a>
+                </article>
+                <article class="svc-card reveal d1">
+                    <p class="kicker cat">Development</p>
+                    <h3>Custom builds</h3>
+                    <p>Bespoke web apps, integrations and automation — scoped and quoted up front.</p>
+                    <p class="svc-price">from <b>£1,200</b></p>
+                    <a class="svc-link" href="/builds">See plans <span class="arr" aria-hidden="true">→</span></a>
+                </article>
+                <article class="svc-card reveal d2">
+                    <p class="kicker cat">Advice</p>
+                    <h3>Consulting</h3>
+                    <p>Practical tech and growth help — hourly, strategy days or a retainer.</p>
+                    <p class="svc-price">from <b>£45</b>/hr</p>
+                    <a class="svc-link" href="/consulting">See plans <span class="arr" aria-hidden="true">→</span></a>
+                </article>
             </div>
         </section>
 
@@ -384,13 +195,13 @@
                 <a href="/" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-word">oadio</span></a>
                 <p class="foot-tag">Radio hosting, websites &amp; hands-on help for growing businesses.</p>
             </div>
-            <div><h3>Services</h3><p><a href="#radio">Radio hosting</a></p><p><a href="#shop-radio">In-store radio</a></p><p><a href="#web-design">Websites</a></p><p><a href="#consulting">Consulting</a></p></div>
+            <div><h3>Services</h3><p><a href="/radio">Radio hosting</a></p><p><a href="/in-store">In-store radio</a></p><p><a href="/websites">Websites</a></p><p><a href="/builds">Custom builds</a></p><p><a href="/consulting">Consulting</a></p></div>
             <div><h3>Company</h3><p><a href="/faq">FAQ</a></p><p><a href="/contact">Contact</a></p><p><a href="https://billing.stripe.com/p/login/8x26oG4LE1Jm8Xle5O7ss00" target="_blank" rel="noopener">Manage subscription</a></p><p><a href="mailto:hello@oadio.com">hello@oadio.com</a></p></div>
             <div><h3>Legal</h3><p><a href="/privacy">Privacy</a></p><p><a href="/terms">Terms</a></p></div>
         </div>
         <p class="foot-base">© 2026 Oadio</p>
     </footer>
 
-    <script src="js/main.js?v=6"></script>
+    <script src="js/main.js?v=7"></script>
 </body>
 </html>

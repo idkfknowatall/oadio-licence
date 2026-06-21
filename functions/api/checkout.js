@@ -35,6 +35,15 @@ export async function onRequestPost({ request, env }) {
   if (!item || !item.price) return json({ error: "Unknown product" }, 404);
 
   const origin = new URL(request.url).origin;
+
+  // Return a cancelled checkout to the page the buyer came from (e.g. /radio)
+  // rather than always dumping them on the home page.
+  let cancelPath = "/";
+  try {
+    const ref = new URL(request.headers.get("Referer") || "");
+    if (ref.origin === origin) cancelPath = ref.pathname;
+  } catch { /* no/invalid referer — fall back to home */ }
+
   const form = new URLSearchParams();
   form.set("mode", item.mode); // "subscription" | "payment"
   form.set("line_items[0][price]", item.price);
@@ -43,7 +52,7 @@ export async function onRequestPost({ request, env }) {
   form.set("billing_address_collection", "required");
   form.set("allow_promotion_codes", "true");
   form.set("success_url", `${origin}/?checkout=success`);
-  form.set("cancel_url", `${origin}/?checkout=cancelled#${sku}`);
+  form.set("cancel_url", `${origin}${cancelPath}?checkout=cancelled`);
   if (item.mode === "payment") form.set("customer_creation", "always");
 
   const res = await fetch("https://api.stripe.com/v1/checkout/sessions", {

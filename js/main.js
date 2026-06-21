@@ -15,6 +15,28 @@
     })
   }
 
+  // ---- Services dropdown (click toggle; hover handled in CSS) ----
+  var drop = document.querySelector('.has-dropdown')
+  if (drop) {
+    var dropToggle = drop.querySelector('.nav-drop-toggle')
+    var setDrop = function (open) {
+      drop.classList.toggle('open', open)
+      if (dropToggle) dropToggle.setAttribute('aria-expanded', open ? 'true' : 'false')
+    }
+    if (dropToggle) {
+      dropToggle.addEventListener('click', function (e) {
+        e.stopPropagation()
+        setDrop(!drop.classList.contains('open'))
+      })
+    }
+    document.addEventListener('click', function (e) {
+      if (!drop.contains(e.target)) setDrop(false)
+    })
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setDrop(false)
+    })
+  }
+
   var reveals = document.querySelectorAll('.reveal')
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {

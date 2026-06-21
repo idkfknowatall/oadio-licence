@@ -189,5 +189,52 @@ section,header,footer{position:relative;z-index:2}
   .reveal{opacity:1;transform:none;transition:none}
   .faq details::details-content{transition:none}
   .nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{transition:none}
+  .nav-panel,.caret,.svc-card,.svc-link,.svc-link .arr{transition:none}
   *{scroll-behavior:auto}
+}
+
+/* ============================================================
+   Services dropdown — styled as a mini receipt (carries the
+   hero receipt's mono / dashed-edge signature into the nav).
+   ============================================================ */
+.has-dropdown{position:relative}
+.nav-drop-toggle{font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-size:.96rem;color:var(--ink-2);background:transparent;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:0;transition:color .15s}
+.nav-drop-toggle:hover,.has-dropdown.open .nav-drop-toggle{color:var(--ink)}
+.caret{width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .25s var(--ease)}
+.has-dropdown.open .caret{transform:rotate(-135deg) translateY(0)}
+.nav-panel{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(-8px);min-width:284px;background:var(--card);border:1px dashed var(--line-2);border-radius:6px;padding:10px;box-shadow:var(--shadow);font-family:"Spline Sans Mono",monospace;opacity:0;visibility:hidden;transition:opacity .2s var(--ease),transform .2s var(--ease);z-index:80}
+.nav-panel::before{content:"";position:absolute;inset:5px;border:1px solid var(--line);border-radius:3px;pointer-events:none}
+.nav-panel::after{content:"";position:absolute;top:-16px;left:0;right:0;height:16px}/* hover bridge over the gap */
+.has-dropdown:hover .nav-panel,.has-dropdown:focus-within .nav-panel,.has-dropdown.open .nav-panel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.nav-panel a{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:10px 12px;border-radius:4px;font-size:.82rem;color:var(--ink-2);transition:background .14s,color .14s}
+.nav-panel a span{font-weight:600;color:var(--ink)}
+.nav-panel a b{font-weight:500;color:var(--amber-2);white-space:nowrap}
+.nav-panel a:hover{background:var(--paper-2);color:var(--ink)}
+
+/* ============================================================
+   Home "What we do" service cards
+   ============================================================ */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
+.svc-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.svc-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.svc-card .kicker{margin-bottom:14px}
+.svc-card h3{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:600;line-height:1.1;letter-spacing:-.02em;margin-bottom:10px}
+.svc-card>p{color:var(--ink-2);font-size:.98rem;margin-bottom:18px;flex-grow:1}
+.svc-price{font-family:"Spline Sans Mono",monospace;font-size:.9rem;color:var(--ink-2);font-weight:500;margin-bottom:18px}
+.svc-price b{font-family:"Fraunces",serif;font-size:1.28rem;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.svc-link{font-weight:700;font-size:.96rem;color:var(--amber-2);display:inline-flex;align-items:center;gap:8px;align-self:flex-start;transition:color .18s}
+.svc-link .arr{transition:transform .2s var(--ease)}
+.svc-card:hover .svc-link{color:var(--amber)}
+.svc-card:hover .svc-link .arr{transform:translateX(5px)}
+.svc-card:focus-within .svc-link .arr{transform:translateX(5px)}
+
+@media(max-width:880px){
+  .svc-grid{grid-template-columns:1fr}
+  .has-dropdown{width:100%}
+  .nav-drop-toggle{width:100%;justify-content:space-between;font-size:1.05rem;color:var(--ink);padding:4px 0}
+  .nav-panel{position:static;transform:none;opacity:1;visibility:hidden;min-width:0;width:100%;box-shadow:none;border:0;background:transparent;padding:0;margin:6px 0 4px;display:none;font-size:1rem}
+  .nav-panel::before,.nav-panel::after{display:none}
+  .has-dropdown.open .nav-panel{display:block;visibility:visible}
+  .nav-panel a{padding:12px 2px;font-size:.96rem;border-bottom:1px solid var(--line)}
+  .nav-panel a b{color:var(--amber-2)}
 }
