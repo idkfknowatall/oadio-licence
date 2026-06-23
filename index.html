@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css?v=17">
+    <link rel="stylesheet" href="css/style.css?v=18">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.svg">
@@ -124,15 +124,31 @@
                         <a href="/contact" class="btn btn-line">Talk to us</a>
                     </div>
                 </div>
-                <div class="receipt reveal d2" aria-hidden="true">
-                    <div class="receipt-head"><span class="deck-dot"></span> OADIO · SERVICES</div>
-                    <div class="receipt-line"><span>Radio hosting</span><b>from £9.99/mo</b></div>
-                    <div class="receipt-line"><span>In-store radio</span><b>from £13.99/mo</b></div>
-                    <div class="receipt-line"><span>Websites</span><b>from £99</b></div>
-                    <div class="receipt-line"><span>Custom builds</span><b>from £1,200</b></div>
-                    <div class="receipt-line"><span>Consulting</span><b>from £45/hr</b></div>
+                <div class="receipt reveal d2" role="group" aria-label="Build your bundle: tick the services you need">
+                    <div class="receipt-head"><span class="deck-dot"></span> OADIO · BUILD YOUR BUNDLE</div>
+                    <label class="receipt-line interactive">
+                        <span class="receipt-item-name"><input type="checkbox" data-cat="recurring" value="9.99" checked><span>Radio hosting</span></span>
+                        <b>from £9.99/mo</b>
+                    </label>
+                    <label class="receipt-line interactive">
+                        <span class="receipt-item-name"><input type="checkbox" data-cat="recurring" value="13.99" checked><span>In-store radio</span></span>
+                        <b>from £13.99/mo</b>
+                    </label>
+                    <label class="receipt-line interactive">
+                        <span class="receipt-item-name"><input type="checkbox" data-cat="setup" value="99" checked><span>Websites</span></span>
+                        <b>from £99</b>
+                    </label>
+                    <label class="receipt-line interactive">
+                        <span class="receipt-item-name"><input type="checkbox" data-cat="setup" value="1200" checked><span>Custom builds</span></span>
+                        <b>from £1,200</b>
+                    </label>
+                    <label class="receipt-line interactive">
+                        <span class="receipt-item-name"><input type="checkbox" data-cat="hourly" value="45" checked><span>Consulting</span></span>
+                        <b>from £45/hr</b>
+                    </label>
                     <div class="receipt-rule double"></div>
                     <div class="receipt-line total"><span>One supplier</span><b>one invoice</b></div>
+                    <div class="receipt-total-output" aria-live="polite"></div>
                     <div class="receipt-foot">Transparent pricing · no setup fees · no lock-in. Prices exclude VAT.</div>
                     <div class="receipt-tear"></div>
                 </div>
@@ -187,6 +203,29 @@
             </div>
         </section>
 
+        <section class="why-bundle" aria-labelledby="why-h">
+            <div class="why-inner">
+                <header class="why-head">
+                    <p class="kicker reveal">Why one supplier</p>
+                    <h2 id="why-h" class="reveal d1">Five services, but they pull together.</h2>
+                </header>
+                <div class="why-grid">
+                    <article class="why-card reveal d1">
+                        <h3>One team, full context</h3>
+                        <p>The people who run your radio also build your site, your tools and your automations. No re-explaining your business to a new agency each time.</p>
+                    </article>
+                    <article class="why-card reveal d2">
+                        <h3>Built to fit together</h3>
+                        <p>Site, stream, bookings, integrations: designed to work as one system, not five vendors' parts bolted on and hoping they talk.</p>
+                    </article>
+                    <article class="why-card reveal d3">
+                        <h3>One bill, one contact</h3>
+                        <p>One invoice, one number to call, one team accountable. Less admin, and no finger-pointing when something needs fixing.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section class="booth" aria-labelledby="booth-h">
             <div class="booth-inner">
                 <p class="kicker light reveal">Why Oadio</p>
@@ -233,6 +272,6 @@
         <p class="foot-base">© 2026 Oadio</p>
     </footer>
 
-    <script src="js/main.js?v=11"></script>
+    <script src="js/main.js?v=12"></script>
 </body>
 </html>

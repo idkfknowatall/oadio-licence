@@ -314,6 +314,32 @@ section,header,footer{position:relative;z-index:2}
 .cta-band h2 em{font-style:italic;font-weight:500;color:var(--amber)}
 .cta-band p{color:var(--ink-2);font-size:1.12rem;max-width:40em;margin:0 auto 30px;text-wrap:pretty}
 
+/* Interactive bundle receipt — the hero ledger is now a real picker.
+   Tick services; totals recompute live in honest mixed-unit buckets. */
+.receipt-line.interactive{cursor:pointer;user-select:none;transition:opacity .2s var(--ease)}
+.receipt-item-name{display:flex;align-items:center;gap:10px}
+.receipt-item-name input[type="checkbox"]{width:15px;height:15px;margin:0;accent-color:var(--amber-2);cursor:pointer;flex-shrink:0}
+.receipt-line.interactive:has(input:not(:checked)){opacity:.45}
+.receipt-line.interactive:has(input:not(:checked)) span,
+.receipt-line.interactive:has(input:not(:checked)) b{text-decoration:line-through}
+.receipt-item-name input:not(:checked) ~ span{text-decoration:line-through} /* no-:has() fallback */
+.receipt-total-output{display:flex;flex-direction:column;align-items:flex-end;gap:5px;margin-top:8px}
+.receipt-bucket{font-weight:600;letter-spacing:-.01em}
+.receipt-bucket.recurring{font-size:1.05rem;color:var(--amber-2)}
+.receipt-bucket.setup,.receipt-bucket.hourly{font-size:.9rem;color:var(--ink)}
+.receipt-bucket.empty{font-size:.9rem;font-weight:400;font-style:italic;color:var(--ink-2)}
+@media(prefers-reduced-motion:reduce){.receipt-line.interactive{transition:none}}
+
+/* "Why one supplier" — light section tying the services together
+   (distinct from the dark "Why Oadio" act). */
+.why-bundle{background:var(--paper);border-top:1px solid var(--line);padding:clamp(40px,6vw,76px) 24px}
+.why-inner{max-width:var(--maxw);margin:0 auto}
+.why-head{margin-bottom:clamp(32px,4vw,52px);max-width:40rem}
+.why-head h2{margin-top:6px}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,48px)}
+.why-card h3{font-size:1.35rem;margin-bottom:12px;line-height:1.2}
+.why-card p{color:var(--ink-2);font-size:1.02rem;line-height:1.6;text-wrap:pretty}
+
 @media(max-width:880px){
   .booth-stats b{font-size:2rem}
 }

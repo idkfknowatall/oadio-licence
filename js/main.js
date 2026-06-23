@@ -255,4 +255,34 @@
       b.addEventListener('pointerleave', function () { b.style.transform = '' })
     })
   }
+
+  // ---- Interactive bundle receipt (hero): tick services -> live, honest totals ----
+  var receipt = document.querySelector('.receipt')
+  if (receipt) {
+    var boxes = receipt.querySelectorAll('input[type="checkbox"]')
+    var output = receipt.querySelector('.receipt-total-output')
+    if (boxes.length && output) {
+      var fmtMo = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: 2 })
+      var fmtSetup = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 })
+      var updateBundle = function () {
+        var mo = 0, setup = 0, hourly = false, any = false
+        boxes.forEach(function (b) {
+          if (!b.checked) return
+          any = true
+          var v = parseFloat(b.value), cat = b.getAttribute('data-cat')
+          if (cat === 'recurring') mo += v
+          else if (cat === 'setup') setup += v
+          else if (cat === 'hourly') hourly = true
+        })
+        if (!any) { output.innerHTML = '<div class="receipt-bucket empty">Pick what you need</div>'; return }
+        var html = ''
+        if (mo > 0) html += '<div class="receipt-bucket recurring">from ' + fmtMo.format(mo) + '/mo</div>'
+        if (setup > 0) html += '<div class="receipt-bucket setup">+ ' + fmtSetup.format(setup) + ' to set up</div>'
+        if (hourly) html += '<div class="receipt-bucket hourly">+ £45/hr advice</div>'
+        output.innerHTML = html
+      }
+      boxes.forEach(function (b) { b.addEventListener('change', updateBundle) })
+      updateBundle()
+    }
+  }
 })()
