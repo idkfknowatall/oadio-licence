@@ -28,11 +28,11 @@ export const SKUS = {
     "mode": "subscription"
   },
   "webdesign_landing": {
-    "price": "price_1TjBUwAlhJDHJxnO6Hv1dUVt",
+    "price": "price_1TlX9kAlhJDHJxnOJpDviSXL",
     "mode": "payment"
   },
   "webdesign_business": {
-    "price": "price_1TjBUwAlhJDHJxnO43BGGWZH",
+    "price": "price_1TlX9kAlhJDHJxnOyLZqTtO6",
     "mode": "payment"
   },
   "consulting_day": {
