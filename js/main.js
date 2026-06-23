@@ -65,18 +65,20 @@
 
   var mcta = document.querySelector('.mobile-cta')
   var hero = document.querySelector('.hero')
-  var contactSec = document.getElementById('contact')
+  var footer = document.querySelector('.site-footer')
   if (mcta && hero && 'IntersectionObserver' in window) {
-    var heroGone = false, contactSeen = false
+    var heroGone = false, endNear = false
     var updateCta = function () {
-      mcta.classList.toggle('show', heroGone && !contactSeen)
+      mcta.classList.toggle('show', heroGone && !endNear)
     }
     new IntersectionObserver(function (es) {
       heroGone = !es[0].isIntersecting; updateCta()
     }).observe(hero)
-    if (contactSec) new IntersectionObserver(function (es) {
-      contactSeen = es[0].isIntersecting; updateCta()
-    }).observe(contactSec)
+    // hide the floater as the footer nears, so it never stacks with the
+    // page's own end CTA (pre-footer band or "which fit" section above it).
+    if (footer) new IntersectionObserver(function (es) {
+      endNear = es[0].isIntersecting; updateCta()
+    }, { rootMargin: '0px 0px 220px 0px' }).observe(footer)
   }
 
   // ---- contact form (POST /api/contact -> Resend; mailto fallback) ----
