@@ -116,6 +116,7 @@ section,header,footer{position:relative;z-index:2}
 .price.featured .amount .per{color:rgba(243,233,216,.6)}
 .amount .was{font-size:1.15rem;font-weight:500;color:var(--ink-2);text-decoration:line-through;text-decoration-thickness:1.5px;margin-right:12px;vertical-align:middle}
 .price.featured .amount .was{color:rgba(243,233,216,.55)}
+.amount .from{font-family:"Hanken Grotesk",sans-serif;font-size:.95rem;font-weight:600;color:var(--ink-2);margin-right:4px;vertical-align:middle}
 .amount-alt{color:var(--ink-2);font-size:.9rem;margin:6px 0 20px}
 .price .ticks{flex-grow:1;margin-bottom:26px}
 .price.featured .ticks li{color:rgba(243,233,216,.85)}
