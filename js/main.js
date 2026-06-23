@@ -245,7 +245,7 @@
 
   // ---- Magnetic primary buttons (fine pointers only) ----
   if (!reduce && window.matchMedia('(pointer:fine)').matches) {
-    document.querySelectorAll('.hero-ctas .btn-solid, .booth .btn-solid').forEach(function (b) {
+    document.querySelectorAll('.hero-ctas .btn-solid, .booth .btn-solid, .cta-band .btn-solid').forEach(function (b) {
       b.addEventListener('pointermove', function (e) {
         var r = b.getBoundingClientRect()
         var mx = e.clientX - r.left - r.width / 2
