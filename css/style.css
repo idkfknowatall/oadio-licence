@@ -95,6 +95,9 @@ section,header,footer{position:relative;z-index:2}
 .ticks.light li{color:rgba(243,233,216,.82)}
 .ticks li::before{content:"";position:absolute;left:0;top:15px;width:14px;height:14px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(217,83,28,.18)}
 .ticks.light li::before{background:var(--gold);box-shadow:0 0 0 4px rgba(224,162,58,.2)}
+.ticks s{opacity:.5;margin-right:4px}
+.ticks .promo{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--amber-2);margin-left:6px}
+.price.featured .ticks .promo,.ticks.light .promo{color:var(--gold)}
 .bill-toggle{display:inline-flex;gap:4px;margin-top:30px;background:var(--card);border:1px solid var(--line-2);border-radius:100px;padding:4px}
 .bill-toggle button{font-family:inherit;font-weight:700;font-size:.92rem;border:0;background:transparent;color:var(--ink-2);padding:.6em 1.3em;border-radius:100px;cursor:pointer;transition:background .18s,color .18s}
 .bill-toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
@@ -111,6 +114,8 @@ section,header,footer{position:relative;z-index:2}
 .amount{font-family:"Fraunces",serif;font-size:2.8rem;font-weight:600;line-height:1}
 .amount .per{font-family:"Hanken Grotesk",sans-serif;font-size:.95rem;font-weight:600;color:var(--ink-2)}
 .price.featured .amount .per{color:rgba(243,233,216,.6)}
+.amount .was{font-size:1.4rem;font-weight:600;color:var(--ink-2);text-decoration:line-through;margin-right:10px}
+.price.featured .amount .was{color:rgba(243,233,216,.55)}
 .amount-alt{color:var(--ink-2);font-size:.9rem;margin:6px 0 20px}
 .price .ticks{flex-grow:1;margin-bottom:26px}
 .price.featured .ticks li{color:rgba(243,233,216,.85)}
