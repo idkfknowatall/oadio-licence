@@ -198,9 +198,9 @@ section,header,footer{position:relative;z-index:2}
   .faq details::details-content{transition:none}
   .nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{transition:none}
   .nav-panel,.caret,.svc-card,.svc-link,.svc-link .arr{transition:none}
-  .onair-dot,.brand-mark{animation:none!important}
+  .brand-mark{animation:none!important}
   .ticker-track{animation:none!important;transform:none}
-  .booth-wave,.site-footer::before{animation:none!important}
+  .site-footer::before{animation:none!important}
   *{scroll-behavior:auto}
 }
 
@@ -263,26 +263,18 @@ section,header,footer{position:relative;z-index:2}
 }
 
 /* ============================================================
-   Broadcast / signal layer — the brand is radio, so the
-   signature throughline is a transmitted signal: a live hero
-   waveform, an on-air status chip, a ticker, a dark "booth"
-   act, and an ambient signal strip in the footer.
+   "One supplier" layer — the throughline is the receipt/ledger
+   idea (every service, one transparent bill): a dark value act
+   with a stat band, a scrolling line-item ticker, an ambient
+   tape strip in the footer, and small load/hover motion.
    ============================================================ */
-
-/* On-air status chip (replaces the plain hero eyebrow) */
-.onair{display:inline-flex;align-items:center;gap:9px;font-family:"Spline Sans Mono",monospace;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;font-weight:600;color:var(--amber-2);margin-bottom:22px}
-.onair-dot{width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 0 rgba(217,83,28,.5);animation:onair-pulse 2.4s var(--ease) infinite}
-@keyframes onair-pulse{0%{box-shadow:0 0 0 0 rgba(217,83,28,.5)}70%{box-shadow:0 0 0 9px rgba(217,83,28,0)}100%{box-shadow:0 0 0 0 rgba(217,83,28,0)}}
-
-/* Live hero waveform (canvas painted in main.js) */
-.hero-wave{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 
 /* One-time "signal ping" when the brand mark first paints */
 .brand-mark{animation:mark-ping .9s var(--ease) both}
 @keyframes mark-ping{0%{transform:scale(.4);opacity:0}55%{opacity:1}100%{transform:scale(1);opacity:1}}
 
-/* Dark "broadcast booth" act — the page's one dark section, where
-   the otherwise-unused teal finally earns its keep. */
+/* Dark "value" act — the page's one dark section (the "Why Oadio"
+   band), where the otherwise-unused teal finally earns its keep. */
 .booth{background:var(--booth);color:rgba(243,233,216,.78);padding:clamp(56px,8vw,104px) 0 0;position:relative;overflow:hidden}
 .booth-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 .booth h2{color:var(--paper)}
@@ -296,8 +288,9 @@ section,header,footer{position:relative;z-index:2}
 .booth-stats span{display:block;font-family:"Spline Sans Mono",monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;color:rgba(243,233,216,.55);margin-top:10px}
 @media(max-width:680px){.booth-stats{grid-template-columns:repeat(2,1fr);gap:20px}}
 
-/* Ticker / marquee — a station-ID strip. Content is duplicated in
-   the markup so the loop is seamless; pauses on hover. */
+/* Ticker / marquee — a scrolling line-item strip (services + prices).
+   Content is duplicated in the markup so the loop is seamless;
+   pauses on hover. */
 .ticker{border-top:1px solid rgba(243,233,216,.16);border-bottom:1px solid rgba(243,233,216,.16);overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .ticker-track{display:inline-flex;align-items:center;gap:0;padding:16px 0;animation:ticker-scroll 34s linear infinite;will-change:transform}
 .ticker:hover .ticker-track{animation-play-state:paused}
@@ -305,7 +298,7 @@ section,header,footer{position:relative;z-index:2}
 .ticker-track span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.6}
 @keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* Ambient signal strip along the top of the footer */
+/* Ambient ticker-tape strip along the top of the footer */
 .site-footer{position:relative}
 .site-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background-image:repeating-linear-gradient(90deg,var(--gold) 0 2px,transparent 2px 7px);background-size:80px 100%;opacity:.5;animation:signal-slide 7s linear infinite}
 @keyframes signal-slide{from{background-position:0 0}to{background-position:80px 0}}

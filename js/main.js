@@ -243,67 +243,6 @@
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  // ---- Hero waveform: a live transmitted signal behind the headline ----
-  var wave = document.querySelector('.hero-wave')
-  if (wave && wave.getContext) {
-    var ctx = wave.getContext('2d')
-    var dpr = Math.min(window.devicePixelRatio || 1, 2)
-    var W = 1, H = 1, phase = 0, amp = 0, targetAmp = 0
-    var lastY = window.scrollY, raf = 0, visible = true
-
-    function size () {
-      var r = wave.getBoundingClientRect()
-      W = Math.max(1, r.width); H = Math.max(1, r.height)
-      wave.width = W * dpr; wave.height = H * dpr
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-    }
-    function draw () {
-      ctx.clearRect(0, 0, W, H)
-      var mid = H * 0.62
-      amp += (targetAmp - amp) * 0.08
-      var lines = [
-        { a: amp, k: 0.012, sp: 1.0, col: 'rgba(217,83,28,0.20)', w: 2 },
-        { a: amp * 0.6, k: 0.018, sp: -0.7, col: 'rgba(31,94,84,0.14)', w: 1.5 }
-      ]
-      lines.forEach(function (ln) {
-        ctx.beginPath()
-        for (var x = 0; x <= W; x += 6) {
-          var y = mid + Math.sin(x * ln.k + phase * ln.sp) * ln.a +
-                  Math.sin(x * ln.k * 2.3 + phase * ln.sp * 1.7) * ln.a * 0.3
-          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)
-        }
-        ctx.strokeStyle = ln.col; ctx.lineWidth = ln.w; ctx.lineJoin = 'round'; ctx.stroke()
-      })
-    }
-    function tick () {
-      phase += 0.025
-      targetAmp += (H * 0.045 - targetAmp) * 0.05  // settle toward a calm baseline
-      draw()
-      raf = visible ? requestAnimationFrame(tick) : 0
-    }
-
-    size()
-    if (reduce) {
-      targetAmp = amp = H * 0.05; phase = 1.2; draw()
-    } else {
-      window.addEventListener('resize', function () { dpr = Math.min(window.devicePixelRatio || 1, 2); size() })
-      window.addEventListener('scroll', function () {
-        var dy = Math.abs(window.scrollY - lastY); lastY = window.scrollY
-        targetAmp = Math.min(H * 0.18, targetAmp + dy * 0.25)  // signal spikes with scroll velocity
-      }, { passive: true })
-      document.addEventListener('visibilitychange', function () {
-        if (!document.hidden && !raf && visible) tick()
-      })
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function (es) {
-          visible = es[0].isIntersecting
-          if (visible && !raf) tick()
-        }, { threshold: 0 }).observe(wave)
-      }
-      tick()
-    }
-  }
-
   // ---- Magnetic primary buttons (fine pointers only) ----
   if (!reduce && window.matchMedia('(pointer:fine)').matches) {
     document.querySelectorAll('.hero-ctas .btn-solid, .booth .btn-solid').forEach(function (b) {
