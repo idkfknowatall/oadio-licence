@@ -319,10 +319,9 @@ section,header,footer{position:relative;z-index:2}
 .receipt-line.interactive{cursor:pointer;user-select:none;transition:opacity .2s var(--ease)}
 .receipt-item-name{display:flex;align-items:center;gap:10px}
 .receipt-item-name input[type="checkbox"]{width:15px;height:15px;margin:0;accent-color:var(--amber-2);cursor:pointer;flex-shrink:0}
-.receipt-line.interactive:has(input:not(:checked)){opacity:.45}
-.receipt-line.interactive:has(input:not(:checked)) span,
-.receipt-line.interactive:has(input:not(:checked)) b{text-decoration:line-through}
-.receipt-item-name input:not(:checked) ~ span{text-decoration:line-through} /* no-:has() fallback */
+/* Picker starts empty; unchecked rows stay neutral, checked rows light up */
+.receipt-line.interactive b{transition:color .2s var(--ease)}
+.receipt-line.interactive:has(input:checked) b{color:var(--amber-2)}
 .receipt-total-output{display:flex;flex-direction:column;align-items:flex-end;gap:5px;margin-top:8px}
 .receipt-bucket{font-weight:600;letter-spacing:-.01em}
 .receipt-bucket.recurring{font-size:1.05rem;color:var(--amber-2)}
