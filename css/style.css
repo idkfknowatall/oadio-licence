@@ -12,6 +12,8 @@
   --amber-2:#a8380f;
   --gold:#e0a23a;
   --teal:#1f5e54;
+  --teal-2:#2f8a7b;
+  --booth:#17110b;
   --line:rgba(35,26,18,.14);
   --line-2:rgba(35,26,18,.28);
   --shadow:0 22px 50px -24px rgba(35,26,18,.45);
@@ -64,7 +66,7 @@ section,header,footer{position:relative;z-index:2}
 .nav-toggle[aria-expanded="true"]:hover span::before,.nav-toggle[aria-expanded="true"]:hover span::after{background:var(--amber-2)}
 .hero{max-width:var(--maxw);margin:0 auto;padding:clamp(34px,5vw,64px) 24px clamp(30px,4vw,52px);overflow-x:clip}
 .hero::before{content:"";position:absolute;z-index:-1;top:-140px;right:-160px;width:560px;height:560px;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 34px,rgba(217,83,28,.06) 34px 36px);pointer-events:none}
-.hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center}
+.hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center;position:relative;z-index:1}
 .eyebrow{font-family:"Spline Sans Mono",monospace;text-transform:uppercase;letter-spacing:.18em;font-size:.74rem;color:var(--amber-2);font-weight:500;margin-bottom:22px}
 .lede{font-size:clamp(1.05rem,1.6vw,1.28rem);color:var(--ink-2);max-width:30em;margin:26px 0 32px;text-wrap:pretty}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
@@ -196,6 +198,9 @@ section,header,footer{position:relative;z-index:2}
   .faq details::details-content{transition:none}
   .nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{transition:none}
   .nav-panel,.caret,.svc-card,.svc-link,.svc-link .arr{transition:none}
+  .onair-dot,.brand-mark{animation:none!important}
+  .ticker-track{animation:none!important;transform:none}
+  .booth-wave,.site-footer::before{animation:none!important}
   *{scroll-behavior:auto}
 }
 
@@ -255,4 +260,59 @@ section,header,footer{position:relative;z-index:2}
   .has-dropdown.open .nav-panel{display:block;visibility:visible}
   .nav-panel a{padding:12px 2px;font-size:.96rem;border-bottom:1px solid var(--line)}
   .nav-panel a b{color:var(--amber-2)}
+}
+
+/* ============================================================
+   Broadcast / signal layer — the brand is radio, so the
+   signature throughline is a transmitted signal: a live hero
+   waveform, an on-air status chip, a ticker, a dark "booth"
+   act, and an ambient signal strip in the footer.
+   ============================================================ */
+
+/* On-air status chip (replaces the plain hero eyebrow) */
+.onair{display:inline-flex;align-items:center;gap:9px;font-family:"Spline Sans Mono",monospace;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;font-weight:600;color:var(--amber-2);margin-bottom:22px}
+.onair-dot{width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 0 rgba(217,83,28,.5);animation:onair-pulse 2.4s var(--ease) infinite}
+@keyframes onair-pulse{0%{box-shadow:0 0 0 0 rgba(217,83,28,.5)}70%{box-shadow:0 0 0 9px rgba(217,83,28,0)}100%{box-shadow:0 0 0 0 rgba(217,83,28,0)}}
+
+/* Live hero waveform (canvas painted in main.js) */
+.hero-wave{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+/* One-time "signal ping" when the brand mark first paints */
+.brand-mark{animation:mark-ping .9s var(--ease) both}
+@keyframes mark-ping{0%{transform:scale(.4);opacity:0}55%{opacity:1}100%{transform:scale(1);opacity:1}}
+
+/* Dark "broadcast booth" act — the page's one dark section, where
+   the otherwise-unused teal finally earns its keep. */
+.booth{background:var(--booth);color:rgba(243,233,216,.78);padding:clamp(56px,8vw,104px) 0 0;position:relative;overflow:hidden}
+.booth-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.booth h2{color:var(--paper)}
+.booth h2 em{font-style:italic;font-weight:500;color:var(--teal-2)}
+.booth .kicker.light{color:var(--gold)}
+.booth-lede{font-size:1.15rem;max-width:44em;margin:22px 0 6px;color:rgba(243,233,216,.7)}
+.booth-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:48px 0 56px}
+.booth-stats div{border-top:1px solid rgba(243,233,216,.16);padding-top:18px}
+.booth-stats b{display:block;font-family:"Fraunces",serif;font-weight:600;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1;letter-spacing:-.02em;color:var(--paper)}
+.booth-stats b .u{color:var(--teal-2)}
+.booth-stats span{display:block;font-family:"Spline Sans Mono",monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;color:rgba(243,233,216,.55);margin-top:10px}
+@media(max-width:680px){.booth-stats{grid-template-columns:repeat(2,1fr);gap:20px}}
+
+/* Ticker / marquee — a station-ID strip. Content is duplicated in
+   the markup so the loop is seamless; pauses on hover. */
+.ticker{border-top:1px solid rgba(243,233,216,.16);border-bottom:1px solid rgba(243,233,216,.16);overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker-track{display:inline-flex;align-items:center;gap:0;padding:16px 0;animation:ticker-scroll 34s linear infinite;will-change:transform}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-track span{font-family:"Spline Sans Mono",monospace;font-size:.82rem;letter-spacing:.06em;color:rgba(243,233,216,.66);padding:0 26px;display:inline-flex;align-items:center;gap:26px}
+.ticker-track span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.6}
+@keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Ambient signal strip along the top of the footer */
+.site-footer{position:relative}
+.site-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background-image:repeating-linear-gradient(90deg,var(--gold) 0 2px,transparent 2px 7px);background-size:80px 100%;opacity:.5;animation:signal-slide 7s linear infinite}
+@keyframes signal-slide{from{background-position:0 0}to{background-position:80px 0}}
+
+/* Magnetic buttons — main.js nudges these toward the pointer */
+.btn-solid{will-change:transform}
+
+@media(max-width:880px){
+  .booth-stats b{font-size:2rem}
 }

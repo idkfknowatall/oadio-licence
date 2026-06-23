@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css?v=12">
+    <link rel="stylesheet" href="css/style.css?v=13">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.svg">
@@ -72,7 +72,7 @@
               "itemOffered": { "@type": "Service", "name": "Radio hosting", "description": "Shoutcast and Icecast hosting on AzuraCast with AutoDJ, global CDN and real-time analytics.", "serviceType": "Radio hosting", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
             { "@type": "Offer", "price": "13.99", "priceCurrency": "GBP", "url": "https://oadio.com/in-store",
               "itemOffered": { "@type": "Service", "name": "In-store radio", "description": "Branded royalty-free background radio for venues, no PPL PRS music licence needed for our station.", "serviceType": "In-store radio", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
-            { "@type": "Offer", "price": "149", "priceCurrency": "GBP", "url": "https://oadio.com/websites",
+            { "@type": "Offer", "price": "99", "priceCurrency": "GBP", "url": "https://oadio.com/websites",
               "itemOffered": { "@type": "Service", "name": "Web design", "description": "Fast, fixed-price websites, landing pages, business sites and ecommerce.", "serviceType": "Web design", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
             { "@type": "Offer", "price": "1200", "priceCurrency": "GBP", "url": "https://oadio.com/builds",
               "itemOffered": { "@type": "Service", "name": "Custom builds", "description": "Bespoke web apps, API and payment integrations, and workflow automation.", "serviceType": "Custom web development", "provider": { "@id": "https://oadio.com/#organization" }, "areaServed": "GB" } },
@@ -114,9 +114,10 @@
 
     <main id="top">
         <section class="hero">
+            <canvas class="hero-wave" aria-hidden="true"></canvas>
             <div class="hero-inner">
                 <div>
-                    <p class="eyebrow reveal">What we do</p>
+                    <p class="onair reveal"><span class="onair-dot" aria-hidden="true"></span>On air · always</p>
                     <h1 class="reveal d1">Everything your business runs on. <em>One bill.</em></h1>
                     <p class="lede reveal d2">Honest, no-nonsense pricing for radio hosting, web design, and the hands-on tech help growing businesses actually need. No hidden costs. No jargon.</p>
                     <div class="hero-ctas reveal d3">
@@ -187,6 +188,25 @@
             </div>
         </section>
 
+        <section class="booth" aria-labelledby="booth-h">
+            <div class="booth-inner">
+                <p class="kicker light reveal">● Signal, not noise</p>
+                <h2 id="booth-h" class="reveal d1">We don't just host radio. <em>We run it.</em></h2>
+                <p class="booth-lede reveal d2">Every service rides the same promise: clear pricing, no lock-in, and a real person when you need one. One supplier across radio, web, and the tech in between.</p>
+                <div class="booth-stats reveal d3">
+                    <div><b>24/7</b><span>Streaming</span></div>
+                    <div><b>5</b><span>Services</span></div>
+                    <div><b>£0</b><span>Setup fees</span></div>
+                    <div><b>1</b><span>Invoice</span></div>
+                </div>
+            </div>
+            <div class="ticker" aria-hidden="true">
+                <div class="ticker-track">
+                    <span>Now broadcasting</span><span>Radio hosting from £9.99/mo</span><span>In-store radio from £13.99/mo</span><span>Websites from £99</span><span>Custom builds from £1,200</span><span>Consulting from £45/hr</span><span>No setup fees</span><span>No lock-in</span><span>Now broadcasting</span><span>Radio hosting from £9.99/mo</span><span>In-store radio from £13.99/mo</span><span>Websites from £99</span><span>Custom builds from £1,200</span><span>Consulting from £45/hr</span><span>No setup fees</span><span>No lock-in</span>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <div class="mobile-cta">
@@ -206,6 +226,6 @@
         <p class="foot-base">© 2026 Oadio</p>
     </footer>
 
-    <script src="js/main.js?v=8"></script>
+    <script src="js/main.js?v=9"></script>
 </body>
 </html>
