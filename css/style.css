@@ -106,6 +106,9 @@ section,header,footer{position:relative;z-index:2}
 .bill-toggle .save{font-size:.76rem;color:var(--amber-2);font-weight:700}
 .bill-toggle button[aria-pressed="true"] .save{color:var(--gold)}
 .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.prices.cols-4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.prices.cols-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.prices.cols-4{grid-template-columns:1fr}}
 .prices.yearly .amt-mo,.prices:not(.yearly) .amt-yr{display:none}
 .price{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px 30px;display:flex;flex-direction:column;position:relative;transition:transform .25s var(--ease)}
 .price:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
