@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css?v=19">
+    <link rel="stylesheet" href="css/style.css?v=20">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.svg">
@@ -82,22 +82,15 @@
                     <button type="button" aria-pressed="false" data-bill="yr">Annual <span class="save">3 months free</span></button>
                 </div>
 
-                <div class="prices cols-4">
-                    <article class="price reveal">
-                        <h3>Free</h3>
-                        <p class="amount"><span class="amt-mo">£0<span class="per">/mo</span></span><span class="amt-yr">£0<span class="per">/yr</span></span></p>
-                        <p class="amount-alt"><span class="amt-mo">Free forever</span><span class="amt-yr">No card needed</span></p>
-                        <ul class="ticks">
-                            <li>2 GB storage</li>
-                            <li>25 listeners</li>
-                            <li>Up to 96 kbps</li>
-                            <li>No CDN · single origin</li>
-                            <li>AzuraCast + AutoDJ</li>
-                            <li>Basic stats · Discord support</li>
-                        </ul>
-                        <a class="btn btn-solid" href="https://discord.gg/bFVgUBV8Na" target="_blank" rel="noopener">Start free</a>
-                    </article>
+                <div class="free-bar reveal d2">
+                    <div class="free-bar__body">
+                        <span class="free-bar__eyebrow">Just starting out?</span>
+                        <p class="free-bar__text">One <strong>free station</strong> — 25 listeners, up to 96 kbps, single origin (no CDN). No card needed.</p>
+                    </div>
+                    <a class="btn btn-line" href="https://discord.gg/bFVgUBV8Na" target="_blank" rel="noopener">Start free</a>
+                </div>
 
+                <div class="prices">
                     <article class="price reveal d1">
                         <h3>Starter</h3>
                         <p class="amount"><span class="amt-mo">£9.99<span class="per">/mo +VAT</span></span><span class="amt-yr">£89.91<span class="per">/yr +VAT</span></span></p>

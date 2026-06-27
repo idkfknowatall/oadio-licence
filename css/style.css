@@ -106,10 +106,12 @@ section,header,footer{position:relative;z-index:2}
 .bill-toggle .save{font-size:.76rem;color:var(--amber-2);font-weight:700}
 .bill-toggle button[aria-pressed="true"] .save{color:var(--gold)}
 .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
-.prices.cols-4{grid-template-columns:repeat(4,1fr)}
-@media(max-width:1000px){.prices.cols-4{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){.prices.cols-4{grid-template-columns:1fr}}
 .prices.yearly .amt-mo,.prices:not(.yearly) .amt-yr{display:none}
+.free-bar{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin:34px 0}
+.free-bar__eyebrow{display:block;font-family:"Spline Sans Mono",monospace;font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--amber-2);margin-bottom:.25rem}
+.free-bar__text{margin:0;font-family:"Hanken Grotesk",sans-serif;font-size:1rem;line-height:1.4;color:var(--ink-2)}
+.free-bar__text strong{color:var(--ink);font-weight:600}
+@media(max-width:620px){.free-bar{flex-direction:column;align-items:flex-start;padding:1.5rem;gap:1.25rem}.free-bar .btn{width:100%}}
 .price{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px 30px;display:flex;flex-direction:column;position:relative;transition:transform .25s var(--ease)}
 .price:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .price.featured{background:var(--ink);color:var(--paper);border-color:var(--ink)}
