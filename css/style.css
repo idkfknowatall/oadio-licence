@@ -34,6 +34,16 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.04;l
 h1{font-size:clamp(2.6rem,7vw,5.4rem);font-weight:650}
 h1 em{font-style:italic;font-weight:500;color:var(--amber)}
 h2{font-size:clamp(2rem,5vw,3.4rem)}
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;animation:aurora-in 1.2s var(--ease) forwards}
+@keyframes aurora-in{from{opacity:0}to{opacity:1}}
+.aurora span{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(80px);opacity:.12;will-change:transform,opacity;transition:opacity .8s var(--ease)}
+.blob-amber{top:-10%;left:-5%;background:radial-gradient(circle,rgba(217,83,28,.4) 38%,transparent 70%)}
+.blob-gold{top:25%;right:-10%;background:radial-gradient(circle,rgba(224,162,58,.4) 38%,transparent 70%)}
+.blob-teal{bottom:-10%;left:20%;background:radial-gradient(circle,rgba(31,94,84,.4) 38%,transparent 70%)}
+.aurora[data-accent="amber"] .blob-amber{opacity:.18}.aurora[data-accent="amber"] span:not(.blob-amber){opacity:.06}
+.aurora[data-accent="gold"] .blob-gold{opacity:.18}.aurora[data-accent="gold"] span:not(.blob-gold){opacity:.06}
+.aurora[data-accent="teal"] .blob-teal{opacity:.18}.aurora[data-accent="teal"] span:not(.blob-teal){opacity:.06}
+@media(prefers-reduced-motion:reduce){.aurora{animation:none;opacity:1}.aurora span{transition:none}}
 section,header,footer{position:relative;z-index:2}
 .btn{display:inline-block;font-family:"Hanken Grotesk",sans-serif;font-weight:700;font-size:1rem;padding:.85em 1.6em;border-radius:100px;cursor:pointer;border:2px solid var(--ink);transition:transform .18s var(--ease),background .18s,color .18s,box-shadow .18s;text-align:center}
 .btn-solid{background:var(--ink);color:var(--paper)}

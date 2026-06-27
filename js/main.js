@@ -287,4 +287,39 @@
       updateBundle()
     }
   }
+
+  // ---- Aurora ambient background: subtle scroll parallax + per-section accent ----
+  var aurora = document.querySelector('.aurora')
+  if (aurora) {
+    var blobs = aurora.querySelectorAll('span')
+
+    // shift the dominant warm tint as each section scrolls into view
+    if ('IntersectionObserver' in window) {
+      var accents = ['amber', 'gold', 'teal']
+      var fxSections = document.querySelectorAll('main > section, .cta-band')
+      fxSections.forEach(function (s, i) { s.setAttribute('data-fx-accent', accents[i % 3]) })
+      var aio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) aurora.setAttribute('data-accent', en.target.getAttribute('data-fx-accent'))
+        })
+      }, { threshold: 0.5 })
+      fxSections.forEach(function (s) { aio.observe(s) })
+    }
+
+    // slow scroll parallax (disabled for reduced motion)
+    if (!reduce) {
+      var auTick = false
+      var auDrift = function () {
+        var y = window.pageYOffset || document.documentElement.scrollTop || 0
+        blobs.forEach(function (b, i) {
+          b.style.transform = 'translate3d(0,' + (y * (0.03 + i * 0.025)).toFixed(1) + 'px,0)'
+        })
+        auTick = false
+      }
+      window.addEventListener('scroll', function () {
+        if (!auTick) { auTick = true; requestAnimationFrame(auDrift) }
+      }, { passive: true })
+      auDrift()
+    }
+  }
 })()
