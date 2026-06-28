@@ -555,31 +555,6 @@ h1 em, .anchor-line em, .cta-band h2 em {
   background-image: repeating-linear-gradient(90deg, var(--gold) 0 2px, transparent 2px 7px);
 }/* --- Liquid Glass Light / Dark Expansion --- */
 
-.bg-video {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-  pointer-events: none;
-}
-
-.bg-scrim {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  background-color: rgba(0, 0, 0, 0.80);
-  transition: background-color 0.3s ease;
-}
-
-body.light-mode .bg-scrim {
-  background-color: rgba(255, 255, 255, 0.82);
-}
-
 /* Floating Theme Toggle Control */
 .theme-toggle {
   position: fixed;
@@ -789,26 +764,9 @@ body.light-mode .booth-stats div {
 /* light-mode featured-card focus: gold is invisible on light glass -> amber */
 body.light-mode .price.featured :focus-visible { outline-color: var(--amber); }
 
-/* WCAG 2.2.2 — manual pause control for the looping background video */
-.motion-toggle {
-  position: fixed; bottom: 1.5rem; left: calc(1.5rem + 58px);
-  width: 46px; height: 46px; border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(18, 18, 22, 0.72);
-  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-  cursor: pointer; z-index: 9999;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--ink); transition: background 0.3s, transform 0.2s;
-}
-.motion-toggle:hover { background: rgba(40, 40, 46, 0.82); transform: scale(1.05); }
-.motion-toggle:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
-body.light-mode .motion-toggle { background: rgba(255, 255, 255, 0.90); border-color: rgba(0, 0, 0, 0.22); color: var(--ink); }
-body.light-mode .motion-toggle:hover { background: rgba(255, 255, 255, 0.78); }
-@media(max-width: 880px) { .motion-toggle { bottom: 84px; } }
-
-/* fallback: if backdrop-filter is unsupported, glass would be transparent over
-   the video -> give surfaces an opaque background instead */
+/* fallback: if backdrop-filter is unsupported, glass would be transparent
+   -> give surfaces an opaque background instead */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .site-header, .nav-panel, .price, .svc-card, .receipt, .free-bar, .contact-card, .bill-toggle, .theme-toggle, .motion-toggle { background: #14151a; }
+  .site-header, .nav-panel, .price, .svc-card, .receipt, .free-bar, .contact-card, .bill-toggle, .theme-toggle { background: #14151a; }
   body.light-mode .site-header, body.light-mode .nav-panel, body.light-mode .price, body.light-mode .svc-card, body.light-mode .receipt, body.light-mode .free-bar, body.light-mode .contact-card, body.light-mode .bill-toggle { background: #ffffff; }
 }
