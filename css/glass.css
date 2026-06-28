@@ -1,0 +1,556 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --paper: #090a0f;
+  --paper-2: rgba(255, 255, 255, 0.02);
+  --card: rgba(255, 255, 255, 0.05);
+  --ink: #f5f5f7;
+  --ink-2: rgba(245, 245, 247, 0.64);
+  --amber: #ff5c26;
+  --amber-2: #ff7647;
+  --gold: #ffbe4b;
+  --teal: #2dd4bf;
+  --teal-2: #4dedd5;
+  --booth: #06070a;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.16);
+  --shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(16px) saturate(1.8);
+}
+
+body {
+  background: radial-gradient(circle at 50% 0%, #161923 0%, #06070a 100%) no-repeat fixed;
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+}
+
+/* Typography Reset to Inter */
+h1, h2, h3, 
+.brand-word, 
+.amount, 
+.faq summary, 
+.anchor-line, 
+.svc-card h3, 
+.contact h2 {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+h1 em, .anchor-line em, .cta-band h2 em {
+  font-style: normal;
+  color: var(--amber);
+}
+
+.eyebrow,
+.kicker,
+.receipt-head,
+.field label,
+.foot-base,
+.ticker-track span,
+.free-bar__eyebrow {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.receipt, .receipt-foot {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Glow Blobs & Soft Grain Overrides */
+.grain {
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+}
+
+.aurora span {
+  opacity: 0.28;
+  filter: blur(120px);
+}
+
+.blob-amber {
+  background: radial-gradient(circle, rgba(255, 92, 38, 0.35) 0%, transparent 70%);
+}
+
+.blob-gold {
+  background: radial-gradient(circle, rgba(255, 190, 75, 0.3) 0%, transparent 70%);
+}
+
+.blob-teal {
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.3) 0%, transparent 70%);
+}
+
+.aurora[data-accent="amber"] .blob-amber { opacity: 0.36; }
+.aurora[data-accent="gold"] .blob-gold { opacity: 0.36; }
+.aurora[data-accent="teal"] .blob-teal { opacity: 0.36; }
+
+/* Global Focus Override */
+:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.price.featured :focus-visible, 
+.site-footer :focus-visible {
+  outline-color: var(--gold);
+}
+
+/* Button & Action Reskins */
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  border-radius: 100px;
+  border-width: 1.5px;
+}
+
+.btn-solid {
+  background: #f5f5f7;
+  color: #06070a;
+  border-color: #f5f5f7;
+}
+
+.btn-solid:hover {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #fff;
+}
+
+.btn-line {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--line-2);
+  color: var(--ink);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.btn-line:hover {
+  background: #f5f5f7;
+  color: #06070a;
+}
+
+.btn-pill {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #fff;
+  font-size: 0.88rem;
+}
+
+.btn-pill:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #06070a;
+}
+
+/* Header & Navigation Overrides */
+.site-header {
+  background: rgba(10, 11, 16, 0.7);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-links a {
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+}
+
+.nav-drop-toggle {
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.nav-drop-toggle:hover,
+.has-dropdown.open .nav-drop-toggle {
+  color: var(--ink);
+}
+
+.nav-panel {
+  background: rgba(10, 11, 16, 0.9);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--line-2);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+
+.nav-panel::before {
+  display: none;
+}
+
+.nav-panel a {
+  border-radius: 8px;
+  color: var(--ink-2);
+}
+
+.nav-panel a span {
+  color: var(--ink);
+}
+
+.nav-panel a b {
+  color: var(--amber);
+}
+
+.nav-panel a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink);
+}
+
+/* Mobile Nav Overlay override */
+@media(max-width: 880px) {
+  .nav-links {
+    background: rgba(9, 10, 15, 0.96) !important;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--line-2);
+  }
+}
+
+/* Receipts Reskinned to Glass Panels */
+.receipt {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-2);
+  border-radius: 28px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow);
+  transform: none;
+}
+
+.receipt::before {
+  display: none;
+}
+
+.receipt-head {
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-2);
+}
+
+.receipt-line span {
+  color: var(--ink-2);
+}
+
+.receipt-line b {
+  color: var(--ink);
+}
+
+.receipt-line.total b {
+  color: var(--amber);
+}
+
+.receipt-line.total span {
+  color: var(--ink);
+}
+
+.receipt-rule {
+  border-top: 1px solid var(--line);
+}
+
+.receipt-rule.double {
+  border-top: 2px solid var(--line-2);
+}
+
+.receipt-foot {
+  color: var(--ink-2);
+}
+
+.receipt-tear {
+  display: none !important;
+}
+
+.receipt-line.interactive:has(input:checked) b {
+  color: var(--amber);
+}
+
+.receipt-bucket.recurring {
+  color: var(--amber);
+}
+
+.receipt-bucket.setup,
+.receipt-bucket.hourly {
+  color: var(--ink);
+}
+
+.receipt-bucket.empty {
+  color: var(--ink-2);
+}
+
+/* Glass Surface Elements & Cards */
+.svc-card,
+.price,
+.contact-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow);
+}
+
+.svc-card:hover,
+.price:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.svc-card>p,
+.svc-price {
+  color: var(--ink-2);
+}
+
+.svc-price b {
+  color: var(--ink);
+}
+
+.svc-link {
+  color: var(--teal);
+}
+
+.svc-card:hover .svc-link {
+  color: var(--teal-2);
+}
+
+/* Featured Price Card Highlight */
+.price.featured {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 92, 38, 0.08) 100%);
+  border-color: rgba(255, 92, 38, 0.35);
+  box-shadow: 0 22px 50px -10px rgba(255, 92, 38, 0.15), var(--shadow);
+  color: var(--ink);
+}
+
+.price.featured:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 92, 38, 0.12) 100%);
+  border-color: rgba(255, 92, 38, 0.55);
+}
+
+.tag {
+  background: var(--amber);
+  color: #1a0a03;
+  border-radius: 100px;
+}
+
+.price.featured .amount-alt {
+  color: var(--ink-2);
+}
+
+.amount .per,
+.price.featured .amount .per,
+.amount .was,
+.price.featured .amount .was,
+.amount .from {
+  color: var(--ink-2);
+}
+
+.price.featured .ticks li {
+  color: var(--ink-2);
+}
+
+/* Interactive elements and filters */
+.bill-toggle {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+}
+
+.bill-toggle button {
+  color: var(--ink-2);
+}
+
+.bill-toggle button[aria-pressed="true"] {
+  background: #f5f5f7;
+  color: #06070a;
+}
+
+.bill-toggle .save {
+  color: var(--amber-2);
+}
+
+.bill-toggle button[aria-pressed="true"] .save {
+  color: var(--amber);
+}
+
+/* Free Bar & Banner Components */
+.free-bar {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-2);
+  border-radius: 20px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.free-bar__eyebrow {
+  color: var(--amber);
+}
+
+.free-bar__text {
+  color: var(--ink-2);
+}
+
+.free-bar__text strong {
+  color: var(--ink);
+}
+
+/* Sections & Bands */
+.section-warm {
+  background: rgba(255, 255, 255, 0.015);
+  border-block: 1px solid var(--line);
+}
+
+.cta-band {
+  background: rgba(255, 255, 255, 0.015);
+  border-top: 1px solid var(--line);
+}
+
+.why-bundle {
+  background: transparent;
+  border-top: 1px solid var(--line);
+}
+
+.booth {
+  background: rgba(6, 7, 10, 0.95);
+  border-top: 1px solid var(--line);
+}
+
+.booth-lede {
+  color: var(--ink-2);
+}
+
+.booth-stats div {
+  border-top: 1px solid var(--line);
+}
+
+.booth-stats b .u {
+  color: var(--teal);
+}
+
+.booth-stats span {
+  color: var(--ink-2);
+}
+
+/* contrast fixes: rules in style.css that used var(--paper) for TEXT now
+   resolve to dark-on-dark under the glass token flip — force light text */
+.booth h2,
+.booth-stats b,
+.light {
+  color: var(--ink);
+}
+
+/* Tickers & Strips */
+.ticker {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.ticker-track span {
+  color: var(--ink-2);
+}
+
+.ticker-track span::after {
+  background: var(--gold);
+}
+
+/* FAQs and Details */
+.faq details {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq summary {
+  color: var(--ink);
+}
+
+.faq summary:hover {
+  color: var(--teal);
+}
+
+.faq summary::after {
+  color: var(--teal);
+}
+
+.faq details p {
+  color: var(--ink-2);
+}
+
+/* Form inputs & A11y Elements */
+.field label {
+  color: var(--ink-2);
+}
+
+.field input,
+.field textarea,
+.field select {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  color: var(--ink);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.field input::placeholder, 
+.field textarea::placeholder {
+  color: var(--ink-2);
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--amber);
+}
+
+.contact-sub {
+  color: var(--ink-2);
+}
+
+.contact-sub a,
+.legal-form-note a {
+  color: var(--teal);
+}
+
+.contact-sub a:hover,
+.legal-form-note a:hover {
+  color: var(--teal-2);
+}
+
+.legal-form-note {
+  color: var(--ink-2);
+}
+
+/* Footer Overrides */
+.site-footer {
+  background: #06070a;
+  color: var(--ink-2);
+}
+
+.foot-grid {
+  border-bottom: 1px solid var(--line);
+}
+
+.site-footer .brand-word {
+  color: var(--ink);
+}
+
+.site-footer h3 {
+  color: var(--ink);
+}
+
+.site-footer a:hover {
+  color: var(--gold);
+}
+
+.site-footer::before {
+  opacity: 0.25;
+  background-image: repeating-linear-gradient(90deg, var(--gold) 0 2px, transparent 2px 7px);
+}
