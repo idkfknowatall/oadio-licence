@@ -117,12 +117,12 @@ section,header,footer{position:relative;z-index:2}
 .bill-toggle button[aria-pressed="true"] .save{color:var(--gold)}
 .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
 .prices.yearly .amt-mo,.prices:not(.yearly) .amt-yr{display:none}
-.free-bar{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin:34px 0}
+.free-bar{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin:34px 0}
 .free-bar__eyebrow{display:block;font-family:"Spline Sans Mono",monospace;font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--amber-2);margin-bottom:.25rem}
 .free-bar__text{margin:0;font-family:"Hanken Grotesk",sans-serif;font-size:1rem;line-height:1.4;color:var(--ink-2)}
 .free-bar__text strong{color:var(--ink);font-weight:600}
 @media(max-width:620px){.free-bar{flex-direction:column;align-items:flex-start;padding:1.5rem;gap:1.25rem}.free-bar .btn{width:100%}}
-.price{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px 30px;display:flex;flex-direction:column;position:relative;transition:transform .25s var(--ease)}
+.price{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:34px 30px;display:flex;flex-direction:column;position:relative;transition:transform .25s var(--ease)}
 .price:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .price.featured{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .price.featured .amount-alt{color:rgba(243,233,216,.6)}
@@ -189,7 +189,7 @@ section,header,footer{position:relative;z-index:2}
 
 @media(max-width:880px){
   .hero-inner{grid-template-columns:1fr;gap:24px}
-  .receipt{max-width:420px;margin-top:8px}
+  .receipt{max-width:420px;margin-top:8px;transform:none}
   .prices{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr;gap:24px}
   .nav-links{position:fixed;inset:65px 0 auto 0;flex-direction:column;background:var(--paper);padding:24px;gap:18px;border-bottom:1px solid var(--line);transform:translateY(-120%);visibility:hidden;transition:transform .3s var(--ease),visibility .3s var(--ease)}
@@ -217,6 +217,7 @@ section,header,footer{position:relative;z-index:2}
   .ticker-track{animation:none!important;transform:none}
   .site-footer::before{animation:none!important}
   *{scroll-behavior:auto}
+  .price:hover,.svc-card:hover{transform:none}
 }
 
 /* ============================================================
@@ -241,7 +242,7 @@ section,header,footer{position:relative;z-index:2}
    Home "What we do" service cards
    ============================================================ */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
-.svc-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.svc-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:30px 28px;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
 .svc-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .svc-card .kicker{margin-bottom:14px}
 .svc-card h3{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:600;line-height:1.1;letter-spacing:-.02em;margin-bottom:10px}
@@ -315,8 +316,7 @@ section,header,footer{position:relative;z-index:2}
 
 /* Ambient ticker-tape strip along the top of the footer */
 .site-footer{position:relative}
-.site-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background-image:repeating-linear-gradient(90deg,var(--gold) 0 2px,transparent 2px 7px);background-size:80px 100%;opacity:.5;animation:signal-slide 7s linear infinite}
-@keyframes signal-slide{from{background-position:0 0}to{background-position:80px 0}}
+.site-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background-image:repeating-linear-gradient(90deg,var(--gold) 0 2px,transparent 2px 7px);background-size:80px 100%;opacity:.5}
 
 /* Magnetic buttons — main.js nudges these toward the pointer */
 .btn-solid{will-change:transform}
