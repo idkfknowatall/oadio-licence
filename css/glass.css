@@ -553,4 +553,226 @@ h1 em, .anchor-line em, .cta-band h2 em {
 .site-footer::before {
   opacity: 0.25;
   background-image: repeating-linear-gradient(90deg, var(--gold) 0 2px, transparent 2px 7px);
+}/* --- Liquid Glass Light / Dark Expansion --- */
+
+.bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.bg-scrim {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.62);
+  transition: background-color 0.3s ease;
+}
+
+body.light-mode .bg-scrim {
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Floating Theme Toggle Control */
+.theme-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line-2);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  transition: background 0.3s, transform 0.2s, border-color 0.3s;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.05);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+}
+
+/* keep the toggle clear of the mobile CTA bar (bottom, full-width <=880px) */
+@media(max-width: 880px) {
+  .theme-toggle { bottom: 84px; }
+}
+
+/* Light Theme Variable Overrides */
+body.light-mode {
+  background: radial-gradient(circle at 50% 0%, #f5f5f7 0%, #e2e4e9 100%) no-repeat fixed;
+  --ink: #1a1a1a;
+  --ink-2: #5b6470;
+  --paper-2: rgba(0, 0, 0, 0.02);
+  --card: rgba(255, 255, 255, 0.55);
+  --line: rgba(0, 0, 0, 0.10);
+  --line-2: rgba(0, 0, 0, 0.20);
+  --glass-bg: rgba(255, 255, 255, 0.3);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  /* darken bright accents so kicker/eyebrow/link text passes AA on light glass */
+  --teal: #0d9488;
+  --teal-2: #0f766e;
+  --amber: #c2410c;
+  --amber-2: #9a3412;
+}
+
+body.light-mode .aurora span {
+  opacity: 0.15;
+}
+
+body.light-mode .theme-toggle {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: var(--ink);
+}
+
+body.light-mode .theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Component Overrides for Light Mode */
+body.light-mode .btn-solid {
+  background: #1a1a1a;
+  color: #f5f5f7;
+  border-color: #1a1a1a;
+}
+
+body.light-mode .btn-solid:hover {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #fff;
+}
+
+body.light-mode .btn-line {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: var(--line-2);
+  color: var(--ink);
+}
+
+body.light-mode .btn-line:hover {
+  background: #1a1a1a;
+  color: #f5f5f7;
+}
+
+body.light-mode .site-header {
+  background: rgba(245, 245, 247, 0.7);
+  border-bottom: 1px solid var(--line);
+}
+
+body.light-mode .nav-panel {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--line-2);
+}
+
+body.light-mode .nav-panel a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+@media(max-width: 880px) {
+  body.light-mode .nav-links {
+    background: rgba(245, 245, 247, 0.96) !important;
+  }
+}
+
+body.light-mode .field input,
+body.light-mode .field textarea,
+body.light-mode .field select {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(0, 0, 0, 0.25);
+  color: var(--ink);
+}
+
+body.light-mode .field input::placeholder, 
+body.light-mode .field textarea::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+body.light-mode .field input:focus,
+body.light-mode .field textarea:focus,
+body.light-mode .field select:focus {
+  background: #fff;
+  border-color: var(--amber);
+}
+
+body.light-mode .price.featured {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 92, 38, 0.08) 100%);
+  border-color: rgba(255, 92, 38, 0.4);
+  box-shadow: 0 22px 50px -10px rgba(255, 92, 38, 0.08), var(--shadow);
+}
+
+body.light-mode .price.featured:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 92, 38, 0.12) 100%);
+  border-color: rgba(255, 92, 38, 0.6);
+}
+
+body.light-mode .bill-toggle {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: var(--line-2);
+}
+
+body.light-mode .bill-toggle button[aria-pressed="true"] {
+  background: #1a1a1a;
+  color: #f5f5f7;
+}
+
+body.light-mode .receipt,
+body.light-mode .free-bar,
+body.light-mode .svc-card,
+body.light-mode .price,
+body.light-mode .contact-card {
+  background: rgba(255, 255, 255, 0.45);
+  border-color: var(--line-2);
+}
+
+body.light-mode .svc-card:hover,
+body.light-mode .price:hover {
+  background: rgba(255, 255, 255, 0.60);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Booth & Footer Hard Reset to Dark Style in Light Mode */
+body.light-mode .booth, 
+body.light-mode .site-footer {
+  background: #06070a !important;
+  color: rgba(245, 245, 247, 0.64) !important;
+}
+
+body.light-mode .booth h2,
+body.light-mode .booth-stats b,
+body.light-mode .light,
+body.light-mode .site-footer h3,
+body.light-mode .site-footer .brand-word {
+  color: #f5f5f7 !important;
+}
+
+body.light-mode .booth-lede,
+body.light-mode .booth-stats span,
+body.light-mode .site-footer a {
+  color: rgba(245, 245, 247, 0.64) !important;
+}
+
+body.light-mode .site-footer a:hover {
+  color: var(--gold) !important;
+}
+
+body.light-mode .booth-stats div {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
