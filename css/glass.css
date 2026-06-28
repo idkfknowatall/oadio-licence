@@ -492,8 +492,8 @@ h1 em, .anchor-line em, .cta-band h2 em {
 .field input,
 .field textarea,
 .field select {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  background: rgba(0, 0, 0, 0.30);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
   color: var(--ink);
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
@@ -572,12 +572,12 @@ h1 em, .anchor-line em, .cta-band h2 em {
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  background-color: rgba(0, 0, 0, 0.62);
+  background-color: rgba(0, 0, 0, 0.80);
   transition: background-color 0.3s ease;
 }
 
 body.light-mode .bg-scrim {
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 0.82);
 }
 
 /* Floating Theme Toggle Control */
@@ -588,8 +588,8 @@ body.light-mode .bg-scrim {
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 1px solid var(--line-2);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(18, 18, 22, 0.72);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   cursor: pointer;
@@ -602,7 +602,7 @@ body.light-mode .bg-scrim {
 }
 
 .theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(40, 40, 46, 0.82);
   transform: scale(1.05);
 }
 
@@ -620,18 +620,18 @@ body.light-mode .bg-scrim {
 body.light-mode {
   background: radial-gradient(circle at 50% 0%, #f5f5f7 0%, #e2e4e9 100%) no-repeat fixed;
   --ink: #1a1a1a;
-  --ink-2: #5b6470;
+  --ink-2: #3f4853;
   --paper-2: rgba(0, 0, 0, 0.02);
   --card: rgba(255, 255, 255, 0.55);
   --line: rgba(0, 0, 0, 0.10);
   --line-2: rgba(0, 0, 0, 0.20);
   --glass-bg: rgba(255, 255, 255, 0.3);
   --glass-border: rgba(0, 0, 0, 0.1);
-  /* darken bright accents so kicker/eyebrow/link text passes AA on light glass */
-  --teal: #0d9488;
-  --teal-2: #0f766e;
-  --amber: #c2410c;
-  --amber-2: #9a3412;
+  /* darkened so accent TEXT passes AA on light glass over the brightest video */
+  --teal: #115e59;
+  --teal-2: #0c4a45;
+  --amber: #9a3412;
+  --amber-2: #7c2d12;
 }
 
 body.light-mode .aurora span {
@@ -639,13 +639,13 @@ body.light-mode .aurora span {
 }
 
 body.light-mode .theme-toggle {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.90);
+  border-color: rgba(0, 0, 0, 0.22);
   color: var(--ink);
 }
 
 body.light-mode .theme-toggle:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.78);
 }
 
 /* Component Overrides for Light Mode */
@@ -695,9 +695,15 @@ body.light-mode .nav-panel a:hover {
 body.light-mode .field input,
 body.light-mode .field textarea,
 body.light-mode .field select {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1.5px solid rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid rgba(0, 0, 0, 0.50);
   color: var(--ink);
+}
+
+/* dark text on the bright dark-mode amber tag fails in light mode where amber
+   is darkened — use white text there */
+body.light-mode .tag {
+  color: #fff;
 }
 
 body.light-mode .field input::placeholder, 
@@ -775,4 +781,34 @@ body.light-mode .site-footer a:hover {
 
 body.light-mode .booth-stats div {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── a11y audit fixes (Claude, math + Flash review) ── */
+/* pill buttons keep their round shape on focus (global :focus-visible sets 8px) */
+.btn:focus-visible, .btn-pill:focus-visible { border-radius: 100px; }
+/* light-mode featured-card focus: gold is invisible on light glass -> amber */
+body.light-mode .price.featured :focus-visible { outline-color: var(--amber); }
+
+/* WCAG 2.2.2 — manual pause control for the looping background video */
+.motion-toggle {
+  position: fixed; bottom: 1.5rem; left: calc(1.5rem + 58px);
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(18, 18, 22, 0.72);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  cursor: pointer; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink); transition: background 0.3s, transform 0.2s;
+}
+.motion-toggle:hover { background: rgba(40, 40, 46, 0.82); transform: scale(1.05); }
+.motion-toggle:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+body.light-mode .motion-toggle { background: rgba(255, 255, 255, 0.90); border-color: rgba(0, 0, 0, 0.22); color: var(--ink); }
+body.light-mode .motion-toggle:hover { background: rgba(255, 255, 255, 0.78); }
+@media(max-width: 880px) { .motion-toggle { bottom: 84px; } }
+
+/* fallback: if backdrop-filter is unsupported, glass would be transparent over
+   the video -> give surfaces an opaque background instead */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header, .nav-panel, .price, .svc-card, .receipt, .free-bar, .contact-card, .bill-toggle, .theme-toggle, .motion-toggle { background: #14151a; }
+  body.light-mode .site-header, body.light-mode .nav-panel, body.light-mode .price, body.light-mode .svc-card, body.light-mode .receipt, body.light-mode .free-bar, body.light-mode .contact-card, body.light-mode .bill-toggle { background: #ffffff; }
 }

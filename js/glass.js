@@ -16,9 +16,10 @@
 
     var isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Inject Scrim
+    // Inject Scrim (decorative — hide from assistive tech)
     var scrim = document.createElement('div');
     scrim.className = 'bg-scrim';
+    scrim.setAttribute('aria-hidden', 'true');
     document.body.appendChild(scrim);
 
     // Inject Video conditional on motion settings
@@ -30,16 +31,41 @@
       video.loop = true;
       video.autoplay = true;
       video.setAttribute('playsinline', '');
-      
+      video.setAttribute('aria-hidden', 'true');
+      video.tabIndex = -1;
+
       var lightVideoUrl = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_103318_2aa26b55-df1a-43a6-903d-941e718c9366.mp4';
       var darkVideoUrl = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4';
-      
+
       video.src = document.body.classList.contains('light-mode') ? lightVideoUrl : darkVideoUrl;
       document.body.appendChild(video);
-      
+
       video.play().catch(function(err) {
         console.warn('Autoplay prevented:', err);
       });
+
+      // WCAG 2.2.2 — manual control to pause the looping background motion
+      var motionBtn = document.createElement('button');
+      motionBtn.className = 'motion-toggle';
+      motionBtn.setAttribute('aria-label', 'Pause background motion');
+      motionBtn.setAttribute('aria-pressed', 'false');
+      var pauseIco = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg>';
+      var playIco = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>';
+      motionBtn.innerHTML = pauseIco;
+      motionBtn.addEventListener('click', function() {
+        if (video.paused) {
+          video.play().catch(function() {});
+          motionBtn.innerHTML = pauseIco;
+          motionBtn.setAttribute('aria-label', 'Pause background motion');
+          motionBtn.setAttribute('aria-pressed', 'false');
+        } else {
+          video.pause();
+          motionBtn.innerHTML = playIco;
+          motionBtn.setAttribute('aria-label', 'Play background motion');
+          motionBtn.setAttribute('aria-pressed', 'true');
+        }
+      });
+      document.body.appendChild(motionBtn);
     }
 
     // Create theme toggle button
